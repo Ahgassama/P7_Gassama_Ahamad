@@ -1,20 +1,28 @@
 const bcrypt = require("bcrypt");
+const connection = require("../config/db");
+require("dotenv").config();
 //const jwt = require("jsonwebtoken");
-const User = require("../models/user.model");
+//const User = require("../models/user.model");
 
-/*exports.signup = (req, res, next) => {
+/*connection.query("SELECT * FROM `Users`", function (err, results, fields) {
+  console.log(results); // results contains rows returned by server
+  console.log(fields); // fields contains extra meta data about results, if available
+  console.log("DB connected");
+});*/
+exports.signup = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
-      const user = new User({
+      const user = {
         name: req.body.name,
         surname: req.body.surname,
         email: req.body.email,
         isAdmin: false,
         password: hash,
-      });
-      user
-        .save()
+      };
+
+      connection
+        .query("INSERT INTO `Users` SET ?", user, err, result)
         .then(() => res.status(201).json({ message: "Utilisateur créé !" }))
         .catch((error) =>
           res
@@ -24,8 +32,8 @@ const User = require("../models/user.model");
     })
     .catch((error) => res.status(500).json({ error }));
 };
-*/
-exports.create = (req, res) => {
+
+/*exports.create = (req, res) => {
   // Validate request
   if (!req.body) {
     res.status(400).send({
@@ -34,16 +42,15 @@ exports.create = (req, res) => {
   }
 
   // Create a User
-  const User = new User({
+  const user = User({
     name: req.body.name,
     surname: req.body.surname,
-    email: req.body.email,
-    isAdmin: false,
-    password: hash,
+    email: req.body.surname,
+    password: req.body.password,
   });
 
   // Save User in the database
-  User.create(User, (err, data) => {
+  User.save(user, (err, data) => {
     if (err)
       res.status(500).send({
         message: err.message || "Some error occurred while creating the User.",
@@ -51,3 +58,4 @@ exports.create = (req, res) => {
     else res.send(data);
   });
 };
+*/
