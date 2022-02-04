@@ -8,6 +8,7 @@ const User = function (user) {
   this.name = user.name;
   this.surname = user.surname;
   this.email = user.email;
+  this.isAdmin = user.isAdmin;
   this.password = user.password;
 };
 User.create = (newUser, result) => {

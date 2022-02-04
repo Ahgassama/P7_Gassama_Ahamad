@@ -1,15 +1,15 @@
 const bcrypt = require("bcrypt");
-const connection = require("../config/db");
+//const connection = require("../models/user.model");
 require("dotenv").config();
 //const jwt = require("jsonwebtoken");
-//const User = require("../models/user.model");
+const User = require("../models/user.model");
 
 /*connection.query("SELECT * FROM `Users`", function (err, results, fields) {
   console.log(results); // results contains rows returned by server
   console.log(fields); // fields contains extra meta data about results, if available
   console.log("DB connected");
 });*/
-exports.signup = (req, res, next) => {
+/*exports.signup = (req, res, next) => {
   bcrypt
     .hash(req.body.password, 10)
     .then((hash) => {
@@ -17,7 +17,7 @@ exports.signup = (req, res, next) => {
         name: req.body.name,
         surname: req.body.surname,
         email: req.body.email,
-        isAdmin: false,
+        isAdmin: req.body.isAdmin || false,
         password: hash,
       };
 
@@ -31,9 +31,32 @@ exports.signup = (req, res, next) => {
         );
     })
     .catch((error) => res.status(500).json({ error }));
-};
-
-/*exports.create = (req, res) => {
+};*/
+/*exports.login = (req, res, next) => {
+    User.findOne({ email: req.body.email })
+      .then((user) => {
+        if (!user) {
+          return res.status(401).json({ error: "Utilisateur non trouvé !" });
+        }
+        bcrypt
+          .compare(req.body.password, user.password)
+          .then((valid) => {
+            if (!valid) {
+              return res.status(401).json({ error: "Mot de passe incorrect !" });
+            }
+            res.status(200).json({
+              userId: user._id,
+              token: jwt.sign({ userId: user._id }, "RANDOM_TOKEN_SECRET", {
+                expiresIn: "24h",
+              }),
+            });
+          })
+          .catch((error) => res.status(500).json({ error }));
+      })
+      .catch((error) => res.status(500).json({ error }));
+  };
+*/
+exports.create = (req, res) => {
   // Validate request
   if (!req.body) {
     res.status(400).send({
@@ -42,15 +65,16 @@ exports.signup = (req, res, next) => {
   }
 
   // Create a User
-  const user = User({
+  const user = new User({
     name: req.body.name,
     surname: req.body.surname,
     email: req.body.surname,
+    isAdmin: req.body.isAdmin || false,
     password: req.body.password,
   });
 
   // Save User in the database
-  User.save(user, (err, data) => {
+  User.create(user, (err, data) => {
     if (err)
       res.status(500).send({
         message: err.message || "Some error occurred while creating the User.",
@@ -58,4 +82,3 @@ exports.signup = (req, res, next) => {
     else res.send(data);
   });
 };
-*/

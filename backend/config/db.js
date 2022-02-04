@@ -31,14 +31,12 @@ connection.connect((error) => {
   this.isAdmin = User.isAdmin;
   this.password = User.password;
 };
-
 connection.query("INSERT INTO `Users` SET ?", User, (err, res) => {
   if (err) {
     console.log("error: ", err);
     result(err, null);
     return;
   }
-
   console.log("created Users: ", { id: res.insertId, ...User });
   result(null, { id: res.insertId, ...newUser });
 });*/
