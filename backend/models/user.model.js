@@ -23,18 +23,23 @@ User.create = (newUser, result) => {
     result(null, { id: res.insertId, ...newUser });
   });
 };
-/*connection.query(
-    "INSERT INTO Users SET ?",
-    {
-      name: "name",
-      surname: "surname",
-      email: "email",
-      isAdmin: false,
-    },
-    function (error, results, fields) {
-      if (error) throw error;
-      console.log(results.insertId);
+
+User.login = (email, result) => {
+  connection.query(`SELECT * FROM Users WHERE email = ${email}`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
     }
-  );*/
+
+    if (res.length) {
+      console.log("found user: ", res[0]);
+      result(null, res[0]);
+      return;
+    }
+
+    result({ kind: "not_found" }, null);
+  });
+};
 
 module.exports = User;
