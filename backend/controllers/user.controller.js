@@ -35,7 +35,7 @@ exports.create = (req, res) => {
 };
 
 exports.login = (req, res, next) => {
-  User.login({ email: req.body.email })
+  User.getByEmail({ email: req.body.email })
     .then((user) => {
       if (!user) {
         return res.status(401).json({ error: "Utilisateur non trouvé !" });

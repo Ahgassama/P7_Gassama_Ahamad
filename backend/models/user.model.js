@@ -24,21 +24,16 @@ User.create = (newUser, result) => {
   });
 };
 
-User.login = (email, result) => {
-  connection.query(`SELECT * FROM Users WHERE email = ${email}`, (err, res) => {
+User.getByEmail = (result) => {
+  connection.query("SELECT * FROM Users WHERE email=?", (err, res) => {
     if (err) {
       console.log("error: ", err);
-      result(err, null);
+      result(null, err);
       return;
     }
 
-    if (res.length) {
-      console.log("found user: ", res[0]);
-      result(null, res[0]);
-      return;
-    }
-
-    result({ kind: "not_found" }, null);
+    console.log("Users: ", res);
+    result(null, res);
   });
 };
 
