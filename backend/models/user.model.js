@@ -11,6 +11,7 @@ const User = function (user) {
   this.isAdmin = user.isAdmin;
   this.password = user.password;
 };
+
 User.create = (newUser, result) => {
   connection.query("INSERT INTO Users SET ?", newUser, (err, res) => {
     if (err) {
@@ -24,17 +25,21 @@ User.create = (newUser, result) => {
   });
 };
 
-User.getByEmail = (result) => {
-  connection.query("SELECT * FROM Users WHERE email=?", (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(null, err);
-      return;
-    }
+User.login = (email, result) => {
+  connection.query(
+    "SELECT userid, password FROM Users WHERE email = ?",
+    [email],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
 
-    console.log("Users: ", res);
-    result(null, res);
-  });
+      console.log("Users: ", res);
+      //result(null, res);
+    }
+  );
 };
 
 module.exports = User;

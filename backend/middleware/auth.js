@@ -1,4 +1,5 @@
 const jwt = require("jsonwebtoken");
+const connection = require("../config/db");
 
 module.exports = (req, res, next) => {
   try {

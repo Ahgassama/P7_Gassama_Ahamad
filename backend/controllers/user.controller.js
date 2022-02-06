@@ -1,7 +1,8 @@
 const bcrypt = require("bcrypt");
-//const connection = require("../models/user.model");
+
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const connection = require("../config/db");
 const User = require("../models/user.model");
 
 exports.create = (req, res) => {
@@ -34,7 +35,7 @@ exports.create = (req, res) => {
   });
 };
 
-exports.login = (req, res, next) => {
+/*exports.login = (req, res, next) => {
   User.getByEmail({ email: req.body.email })
     .then((user) => {
       if (!user) {
@@ -56,4 +57,47 @@ exports.login = (req, res, next) => {
         .catch((error) => res.status(500).json({ error }));
     })
     .catch((error) => res.status(500).json({ error }));
+};
+*/
+/*exports.login = (req, res) => {
+  User.findByName(req.body.name, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found User with email .`,
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving User with email ",
+        });
+      }
+    } else res.send(data);
+  });
+};
+*/
+exports.login = (req, res, next) => {
+  const email = req.body.email;
+  const password = req.body.password;
+
+  User.login([email], function (err, result) {
+    if (err) {
+      return res.status(500).json(err.message);
+    }
+    if (result.length == 0) {
+      return res.status(401).json({ error: "Utilisateur non trouvé !" });
+    }
+    bcrypt
+      .compare(password, result[0].password)
+      .then((valid) => {
+        if (!valid) {
+          return res.status(401).json({ error: "Mot de passe incorrect !" });
+        }
+        res.status(200).json({
+          token: jwt.sign({ userid: result[0].userid }, env.token, {
+            expiresIn: "24h",
+          }),
+        });
+      })
+      .catch((e) => res.status(500).json(e));
+  });
 };
