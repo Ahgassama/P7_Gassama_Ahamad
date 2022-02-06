@@ -37,7 +37,7 @@ User.login = (email, result) => {
       }
 
       console.log("Users: ", res);
-      //result(null, res);
+      result(null, res);
     }
   );
 };
