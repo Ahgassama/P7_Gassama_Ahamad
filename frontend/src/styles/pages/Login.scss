@@ -1,0 +1,25 @@
+.log-container {
+  display: grid;
+  height: 100px;
+  box-sizing: border-box;
+  border: 5px solid #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 7px #c1c1c1;
+  background-color: #fff;
+  margin-top: 90px;
+}
+.connection-form {
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+}
+img {
+  height: 280px;
+}

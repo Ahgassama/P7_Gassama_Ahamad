@@ -1,11 +1,2 @@
-body {
-  font-family: "Roboto";
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  background: #f2f2f2;
-}
-a {
-  text-decoration: none;
-  color: inherit;
-}
+@import "./pages/general.scss";
+@import "./pages/Login.scss";
