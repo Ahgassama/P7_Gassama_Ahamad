@@ -1,6 +1,6 @@
 .log-container {
   display: grid;
-  height: 100px;
+  height: 150px;
   box-sizing: border-box;
   border: 5px solid #fff;
   border-radius: 15px;
@@ -9,13 +9,6 @@
   background-color: #fff;
   margin-top: 90px;
 }
-.connection-form {
-  width: 50%;
-  margin: 0 auto;
-  border-radius: 20px;
-  text-align: center;
-}
-
 .logo {
   display: flex;
   justify-content: center;
@@ -23,12 +16,17 @@
 img {
   height: 280px;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  margin-top: 5px;
-}
-li {
-  cursor: pointer;
+.connection-form {
+  width: 50%;
+  margin: 0 auto;
+  border-radius: 20px;
+  text-align: center;
+  ul {
+    list-style-type: none;
+    margin: 10;
+
+    li {
+      cursor: pointer;
+    }
+  }
 }
