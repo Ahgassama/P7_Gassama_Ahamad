@@ -41,5 +41,56 @@ User.login = (email, result) => {
     }
   );
 };
+User.findById = (id, result) => {
+  connection.query(`SELECT * FROM Users WHERE userid = ${id}`, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(err, null);
+      return;
+    }
+    if (res.length) {
+      console.log("found user: ", res[0]);
+      result(null, res[0]);
+      return;
+    }
+    // not found Tutorial with the id
+    result({ kind: "not_found" }, null);
+  });
+};
+User.updateById = (id, user, result) => {
+  connection.query(
+    "UPDATE Users SET name = ?, surname = ? WHERE userid = ?",
+    [user.name, user.surname, id],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      if (res.affectedRows == 0) {
+        // not found Tutorial with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
+      console.log("updated user: ", { id: id, ...user });
+      result(null, { id: id, ...user });
+    }
+  );
+};
 
+User.remove = (id, result) => {
+  connection.query("DELETE FROM Users WHERE userid = ?", id, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    if (res.affectedRows == 0) {
+      result({ kind: "not_found" }, null);
+      return;
+    }
+    console.log("deleted User with id: ", id);
+    result(null, res);
+  });
+};
 module.exports = User;

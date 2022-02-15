@@ -14,8 +14,8 @@ const Log = () => {
     }
   };
   return (
-    <div class="connection-form">
-      <div class="log-container">
+    <div class="log-container">
+      <div class="connection-form">
         <ul>
           <li onClick={handleModals} id="register">
             Inscription

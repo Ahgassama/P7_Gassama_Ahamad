@@ -2,6 +2,7 @@ const express = require("express");
 
 const app = express();
 const userRoutes = require("./routes/user.route");
+const postRoutes = require("./routes/post.route");
 console.log(userRoutes);
 
 app.use((req, res, next) => {
@@ -19,4 +20,5 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 app.use("/api/user", userRoutes);
+app.use("api/post", postRoutes);
 module.exports = app;

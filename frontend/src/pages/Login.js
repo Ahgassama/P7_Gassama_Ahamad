@@ -9,6 +9,9 @@ const Login = () => {
           alt="img-logo"
         />
       </div>
+      <div className="homeword">
+        <p>Venez discuter avec vos collègues en toute détente</p>
+      </div>
       <div>
         <Log />
       </div>
