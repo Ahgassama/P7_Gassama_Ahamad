@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "../../pages/Home";
 import Profil from "../../pages/Profile";
-import Login from "../../pages/Login";
+import Connexion from "../../pages/Connexion";
 
 const index = () => {
   return (
@@ -10,7 +10,7 @@ const index = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/profil" element={<Profil />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/auth" element={<Connexion />} />
       </Routes>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
 import Log from "../components/Log";
-const Login = () => {
+const Connexion = () => {
   return (
     <div>
       <div className="logo">
@@ -19,4 +19,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Connexion;

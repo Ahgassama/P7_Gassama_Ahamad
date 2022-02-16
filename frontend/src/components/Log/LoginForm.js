@@ -10,7 +10,7 @@ const LoginForm = () => {
     axios({
       method: "POST",
       url: `http://localhost:3000/api/user/login`,
-      withCredentials: true,
+      //withCredentials: true,
       data: {
         email,
         password,

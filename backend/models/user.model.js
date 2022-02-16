@@ -53,8 +53,23 @@ User.findById = (id, result) => {
       result(null, res[0]);
       return;
     }
-    // not found Tutorial with the id
+    // not found User with the id
     result({ kind: "not_found" }, null);
+  });
+};
+User.getAll = (name, result) => {
+  let query = "SELECT name, surname, email FROM Users";
+  if (name) {
+    query += ` WHERE name LIKE '%${name}%'`;
+  }
+  connection.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("Users: ", res);
+    result(null, res);
   });
 };
 User.updateById = (id, user, result) => {
@@ -68,7 +83,7 @@ User.updateById = (id, user, result) => {
         return;
       }
       if (res.affectedRows == 0) {
-        // not found Tutorial with the id
+        // not found User with the id
         result({ kind: "not_found" }, null);
         return;
       }

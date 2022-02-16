@@ -60,6 +60,7 @@ exports.login = (req, res, next) => {
       .catch((e) => res.status(500).json(e));
   });
 };
+
 exports.findOne = (req, res) => {
   User.findById(req.params.id, (err, data) => {
     if (err) {
@@ -73,6 +74,16 @@ exports.findOne = (req, res) => {
         });
       }
     } else res.send(data);
+  });
+};
+exports.findAll = (req, res) => {
+  const name = req.query.name;
+  User.getAll(name, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving Users.",
+      });
+    else res.send(data);
   });
 };
 exports.update = (req, res) => {

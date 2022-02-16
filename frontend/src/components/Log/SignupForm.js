@@ -14,7 +14,7 @@ const SignupForm = () => {
     e.preventDefault();
     axios({
       method: "POST",
-      url: `http://localhost:3000/api/user/login`,
+      url: `http://localhost:3000/api/user/signup`,
       withCredentials: true,
       data: {
         name,
