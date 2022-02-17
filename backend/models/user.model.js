@@ -42,20 +42,24 @@ User.login = (email, result) => {
   );
 };
 User.findById = (id, result) => {
-  connection.query(`SELECT * FROM Users WHERE userid = ${id}`, (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
+  connection.query(
+    `SELECT name, surname FROM Users WHERE userid = ?`,
+    [id],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res.length) {
+        console.log("found user: ", res[0]);
+        result(null, res[0]);
+        return;
+      }
+      // not found User with the id
+      result({ kind: "not_found" }, null);
     }
-    if (res.length) {
-      console.log("found user: ", res[0]);
-      result(null, res[0]);
-      return;
-    }
-    // not found User with the id
-    result({ kind: "not_found" }, null);
-  });
+  );
 };
 User.getAll = (name, result) => {
   let query = "SELECT name, surname, email FROM Users";
