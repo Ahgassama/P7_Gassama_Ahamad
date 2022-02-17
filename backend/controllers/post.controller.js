@@ -1,35 +1,76 @@
 require("dotenv").config();
 const Post = require("../models/post.model");
+const fs = require("fs");
 
-/*exports.create = (req, res) => {
-  // Validate request
+exports.create = (req, res, next) => {
+  console.log("hello", req.body);
+  const postReq = req.body;
+  const post = new Post({
+    message: postReq.message,
+    user_id: req.auth.userId,
+  });
+
+  if (req.file) {
+    post.image = `${req.protocol}://${req.get("host")}/images/${
+      req.file.filename
+    }`;
+  }
+  Post.create(post, (err, response) => {
+    if (err) {
+      return res.status(400).json({ err });
+    }
+    return res.status(201).json({ message: "Objet enregistré !" });
+  });
+};
+exports.findOne = (req, res) => {
+  Post.findById(req.params.id, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Post with id ${req.params.id}.`,
+        });
+      } else {
+        res.status(500).send({
+          message: "Error retrieving Post with id " + req.params.id,
+        });
+      }
+    } else res.send(data);
+  });
+};
+exports.update = (req, res) => {
+  // Validate Request
   if (!req.body) {
     res.status(400).send({
       message: "Content can not be empty!",
     });
   }
-  // Create a Tutorial
-  const post = {
-    message: req.body.message,
-  };
-  // Save Tutorial in the database
-  Post.create(post, (err, data) => {
-    if (err)
-      res.status(500).send({
-        message: err.message || "Some error occurred while creating the User",
-      });
-    else res.send(data);
+  console.log(req.body);
+  Post.updateById(req.params.id, new Post(req.body), (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Post with id ${req.params.id}.`,
+        });
+      } else {
+        res.status(500).send({
+          message: "Error updating Post with id " + req.params.id,
+        });
+      }
+    } else res.send(data);
   });
 };
-*/
-exports.create = (req, res, next) => {
-  const postObject = JSON.parse(req.body.post);
-  delete postObject._id;
-  const post = new Post({
-    ...postObject,
+exports.delete = (req, res) => {
+  Post.remove(req.params.id, (err, data) => {
+    if (err) {
+      if (err.kind === "not_found") {
+        res.status(404).send({
+          message: `Not found Post with id ${req.params.id}.`,
+        });
+      } else {
+        res.status(500).send({
+          message: "Could not delete Post with id " + req.params.id,
+        });
+      }
+    } else res.send({ message: `Post was deleted successfully!` });
   });
-  post
-    .save()
-    .then(() => res.status(201).json({ message: "Objet enregistré !" }))
-    .catch((error) => res.status(400).json({ error }));
 };
