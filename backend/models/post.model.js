@@ -39,6 +39,21 @@ Post.findById = (id, result) => {
     result({ kind: "not_found" }, null);
   });
 };
+Post.getAll = (message, result) => {
+  let query = "SELECT message, image, user_userid FROM Posts";
+  if (message) {
+    query += ` WHERE message LIKE '%${message}%'`;
+  }
+  connection.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("Posts: ", res);
+    result(null, res);
+  });
+};
 Post.updateById = (id, post, result) => {
   connection.query(
     "UPDATE Posts SET message = ?, image = ? WHERE idPost = ?",

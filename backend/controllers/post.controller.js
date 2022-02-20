@@ -37,6 +37,16 @@ exports.findOne = (req, res) => {
     } else res.send(data);
   });
 };
+exports.findAll = (req, res) => {
+  const message = req.query.message;
+  Post.getAll(message, (err, data) => {
+    if (err)
+      res.status(500).send({
+        message: err.message || "Some error occurred while retrieving Posts.",
+      });
+    else res.send(data);
+  });
+};
 exports.update = (req, res) => {
   // Validate Request
   if (!req.body) {
