@@ -1,6 +1,6 @@
 require("dotenv").config();
 const Comment = require("../models/comment.model");
-const { report } = require("../routes/user.route");
+
 exports.create = (req, res, next) => {
   console.log("hello", req.body);
   const commentReq = req.body;

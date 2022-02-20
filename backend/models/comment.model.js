@@ -3,12 +3,12 @@ const connection = require("../config/db");
 const Comment = function (comment) {
   this.message = comment.message ?? "";
   this.user_userid = comment.user_id;
-  this.post_idPost = comment.idPost;
+  this.post_idPost = comment.post_idPost;
 };
 Comment.create = (newComment, callback) => {
   connection.query(
-    `INSERT INTO  Comments (message,user_userid,post_idPost) VALUES (?, ?,?)`,
-    [newComment.message, newComment.user_userid, newComment.idPost],
+    `INSERT INTO  Comments (message,user_userid,post_idPost) VALUES (?, ?, ?)`,
+    [newComment.message, newComment.user_userid, newComment.post_idPost],
     (err, res) => {
       if (err) {
         console.log("error: ", err);
