@@ -21,4 +21,76 @@ Comment.create = (newComment, callback) => {
   );
 };
 
+Comment.findById = (id, result) => {
+  connection.query(
+    `SELECT message FROM Comments WHERE idComment = ?`,
+    [id],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res.length) {
+        console.log("found comment: ", res[0]);
+        result(null, res[0]);
+        return;
+      }
+      // not found User with the id
+      result({ kind: "not_found" }, null);
+    }
+  );
+};
+Comment.getAll = (idPost, result) => {
+  let query = `SELECT * FROM Comments WHERE post_idPost =${idPost}`;
+
+  connection.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("Comments: ", res);
+    result(null, res);
+  });
+};
+Comment.updateById = (id, comment, result) => {
+  connection.query(
+    "UPDATE Comments SET message = ? WHERE idComment = ?",
+    [comment.message, id],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      if (res.affectedRows == 0) {
+        // not found Comment with the id
+        result({ kind: "not_found" }, null);
+        return;
+      }
+      console.log("updated comment: ", { id: id, ...comment });
+      result(null, { id: id, ...comment });
+    }
+  );
+};
+Comment.remove = (id, result) => {
+  connection.query(
+    "DELETE FROM Comments WHERE idComment = ?",
+    id,
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(null, err);
+        return;
+      }
+      if (res.affectedRows == 0) {
+        result({ kind: "not_found" }, null);
+        return;
+      }
+      console.log("deleted Comment with id: ", id);
+      result(null, res);
+    }
+  );
+};
 module.exports = Comment;
