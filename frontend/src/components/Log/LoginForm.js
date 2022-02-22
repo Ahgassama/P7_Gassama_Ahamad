@@ -4,13 +4,14 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleLogin = (e) => {
-    const emailError = document.querySelector(".email-error");
-    const passwordError = document.querySelector(".password-error");
+    const emailError = document.querySelector(".emailerror");
+    const passwordError = document.querySelector(".passworderror");
+    const logError =
+      "Merci de transmettre un e-mail et/ou un mot de passe valide";
     e.preventDefault();
     axios({
       method: "POST",
       url: `http://localhost:3000/api/user/login`,
-      //withCredentials: true,
       data: {
         email,
         password,
@@ -18,10 +19,11 @@ const LoginForm = () => {
     })
       .then((res) => {
         if (res.data.errors) {
-          emailError.innerHTML = res.data.errors.email;
-          passwordError.innerHTML = res.data.errors.password;
+          emailError.innerHTML = logError;
+          passwordError.innerHTML = res.data.errors;
         } else {
           window.location = "/";
+          console.log(res);
         }
       })
       .catch((err) => {
@@ -41,7 +43,7 @@ const LoginForm = () => {
           value={email}
           required
         />
-        <div className="email-error"></div>
+        <div className="emailerror"></div>
         <br />
         <label htmlFor="text">Mot de passe</label>
         <br />
@@ -53,7 +55,7 @@ const LoginForm = () => {
           value={password}
           required
         />
-        <div className="password-error"></div>
+        <div className="passworderror"></div>
         <br />
         <input type="submit" value="Se connecter" />
       </form>
