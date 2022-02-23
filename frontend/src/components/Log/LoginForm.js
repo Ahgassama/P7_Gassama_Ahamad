@@ -23,6 +23,7 @@ const LoginForm = () => {
           passwordError.innerHTML = res.data.errors;
         } else {
           window.location = "/";
+          localStorage.setItem("user", JSON.stringify(res.data));
           console.log(res);
         }
       })

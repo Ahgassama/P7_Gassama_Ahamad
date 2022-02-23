@@ -14,18 +14,20 @@ const Log = () => {
     }
   };
   return (
-    <div class="log-container">
-      <div class="connection-form">
-        <ul>
-          <li onClick={handleModals} id="register">
-            Inscription
-          </li>
-          <li onClick={handleModals} id="login">
-            Connexion
-          </li>
-        </ul>
-        {signUpModal && <SignUpForm />}
-        {loginModal && <LoginForm />}
+    <div>
+      <div class="log-container">
+        <div class="connection-form">
+          <ul>
+            <li onClick={handleModals} id="register">
+              Inscription
+            </li>
+            <li onClick={handleModals} id="login">
+              Connexion
+            </li>
+          </ul>
+          {signUpModal && <SignUpForm />}
+          {loginModal && <LoginForm />}
+        </div>
       </div>
     </div>
   );

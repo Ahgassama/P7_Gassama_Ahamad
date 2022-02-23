@@ -15,7 +15,7 @@ const SignupForm = () => {
     axios({
       method: "POST",
       url: `http://localhost:3000/api/user/signup`,
-      withCredentials: true,
+      //withCredentials: true,
       data: {
         name,
         surname,
