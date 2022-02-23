@@ -1,6 +1,39 @@
 .header-home {
-  display: flex;
-  justify-content: space-around;
   font-size: 30px;
-  margin-top: 10px;
+  height: 90px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  .welcomePage {
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px;
+    font-size: 25px;
+  }
+  .logo-home {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    img {
+      width: 50px;
+    }
+  }
 }
+
+/*.header-home {
+  position: relative;
+  height: 80px;
+
+  background: white;
+  width: 100%;
+  // width: 800px !important;
+  // max-width: 800px;
+  margin-bottom: 80px;
+  & a {
+    height: 100%;
+    & > img {
+      height: 100%;
+    }
+  }
+}
+*/
