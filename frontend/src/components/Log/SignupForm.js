@@ -15,7 +15,6 @@ const SignupForm = () => {
     axios({
       method: "POST",
       url: `http://localhost:3000/api/user/signup`,
-      //withCredentials: true,
       data: {
         name,
         surname,
@@ -30,6 +29,7 @@ const SignupForm = () => {
           emailError.innerHTML = res.data.errors.email;
           passwordError.innerHTML = res.data.errors.password;
         } else {
+          localStorage.setItem("Users", JSON.stringify(res.data));
           window.location = "/";
         }
       })
