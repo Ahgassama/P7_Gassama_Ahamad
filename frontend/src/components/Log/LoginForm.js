@@ -22,9 +22,10 @@ const LoginForm = () => {
           emailError.innerHTML = logError;
           passwordError.innerHTML = res.data.errors;
         } else {
+          localStorage.setItem("Users", JSON.stringify(res.data));
+
           window.location = "/";
-          localStorage.setItem("user", JSON.stringify(res.data));
-          console.log(res);
+          //console.log(res);
         }
       })
       .catch((err) => {
