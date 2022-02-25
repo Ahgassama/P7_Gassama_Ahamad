@@ -16,6 +16,25 @@
     align-items: center;
     img {
       width: 50px;
+      cursor: pointer;
     }
   }
+}
+.containerPost {
+  display: flex;
+  justify-content: center;
+}
+.post {
+  background: white;
+  border: solid 1px black;
+  border-radius: 10px;
+  width: 60%;
+  padding: 5px;
+  height: 200px;
+}
+
+#message {
+  border: none;
+  height: 62px;
+  width: 100%;
 }

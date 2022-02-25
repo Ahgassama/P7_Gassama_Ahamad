@@ -40,7 +40,8 @@ Post.findById = (id, result) => {
   });
 };
 Post.getAll = (message, result) => {
-  let query = "SELECT message, image, user_userid FROM Posts";
+  let query =
+    "SELECT p.idPost, p.message, p.image, p.user_userid AS 'userId', p.date, u.name, u.surname FROM Posts p INNER JOIN Users u ON p.user_userid = u.userid";
   if (message) {
     query += ` WHERE message LIKE '%${message}%'`;
   }
@@ -74,6 +75,7 @@ Post.updateById = (id, post, result) => {
     }
   );
 };
+
 Post.remove = (id, result) => {
   connection.query("DELETE FROM Posts WHERE idPost = ?", id, (err, res) => {
     if (err) {

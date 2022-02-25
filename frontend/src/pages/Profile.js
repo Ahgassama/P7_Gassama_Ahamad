@@ -1,9 +1,11 @@
 import React from "react";
-function Profile() {
+import UpdateProfil from "../components/Profil/Update";
+const Profile = () => {
   return (
     <div>
+      <UpdateProfil />
       <h1>Profil Utilisateur 🧮</h1>
     </div>
   );
-}
+};
 export default Profile;

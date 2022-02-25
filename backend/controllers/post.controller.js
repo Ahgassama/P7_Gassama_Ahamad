@@ -1,5 +1,6 @@
 require("dotenv").config();
 const Post = require("../models/post.model");
+const Comment = require("../models/comment.model");
 const fs = require("fs");
 
 exports.create = (req, res, next) => {
@@ -44,7 +45,28 @@ exports.findAll = (req, res) => {
       res.status(500).send({
         message: err.message || "Some error occurred while retrieving Posts.",
       });
-    else res.send(data);
+    else {
+      Comment.findAll((errCom, dataCom) => {
+        if (errCom) {
+          res.status(500).send({
+            message:
+              err.message || "Some error occurred while retrieving Posts.",
+          });
+        } else {
+          console.log(dataCom);
+          dataCom.forEach((com) => {
+            console.log(data);
+            let index = data.findIndex((post) => post.idPost === com.idPost);
+            if (data[index].comments) {
+              data[index].comments.push(com);
+            } else {
+              data[index].comments = [com];
+            }
+          });
+          res.send(data);
+        }
+      });
+    }
   });
 };
 exports.update = (req, res) => {

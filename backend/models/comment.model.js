@@ -54,6 +54,19 @@ Comment.getAll = (idPost, result) => {
     result(null, res);
   });
 };
+Comment.findAll = (result) => {
+  let query = `SELECT c.idComment, c.post_idPost AS 'idPost', c.message, u.userid, u.name, u.surname FROM Comments c INNER JOIN Users u ON c.user_userid = u.userid `;
+
+  connection.query(query, (err, res) => {
+    if (err) {
+      console.log("error: ", err);
+      result(null, err);
+      return;
+    }
+    console.log("Comments: ", res);
+    result(null, res);
+  });
+};
 Comment.updateById = (id, comment, result) => {
   connection.query(
     "UPDATE Comments SET message = ? WHERE idComment = ?",
