@@ -1,18 +1,14 @@
 import React from "react";
-import NewPost from "../components/Posts";
-//import Feed from "../components/Posts";
+//import NewPost from "../components/Posts";
+import DisplayPosts from "../components/Posts/DisplayPosts";
+import Header from "../components/Header/header";
+
 const Home = () => {
   return (
     <div>
-      <div className="header-home">
-        <div className="welcomePage">Bienvenue sur Grouporama!</div>
-
-        <div className="logo-home">
-          <img src="./images/user.svg" alt="profile" />
-        </div>
-      </div>
+      <Header />
       <div className="containerPost">
-        <NewPost />
+        <DisplayPosts />
       </div>
     </div>
   );

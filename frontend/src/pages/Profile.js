@@ -1,10 +1,9 @@
 import React from "react";
-import UpdateProfil from "../components/Profil/Update";
+import DisplayProfile from "../components/Profil/Edit";
 const Profile = () => {
   return (
     <div>
-      <UpdateProfil />
-      <h1>Profil Utilisateur 🧮</h1>
+      <DisplayProfile />
     </div>
   );
 };

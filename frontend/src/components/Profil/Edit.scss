@@ -1,0 +1,25 @@
+.form-profil {
+  display: flex;
+  justify-content: center;
+  height: 45%;
+  width: 60%;
+  box-sizing: border-box;
+  border: 5px solid #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 7px #c1c1c1;
+  background-color: #fff;
+  margin: auto;
+  .profil-input {
+    margin-left: 10;
+  }
+  /*.user-surname {
+    margin: 10;
+  }
+  .user-email {
+    margin: 10;
+  }
+  .user-password {
+    margin: 10;
+  }*/
+}

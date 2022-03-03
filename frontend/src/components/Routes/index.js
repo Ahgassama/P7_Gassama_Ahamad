@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import Home from "../../pages/Home";
 import Profil from "../../pages/Profile";
 import Connexion from "../../pages/Connexion";
+import Header from "../Header/header";
 
 const index = () => {
   return (
