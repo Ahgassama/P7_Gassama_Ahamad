@@ -1,20 +1,7 @@
-//import React, { useState, useEffect } from "react";
-/*import React, { useState } from "react";
-import axios from "axios";
-import NewPost from ".";
-
-const AffichagePosts = () => {
-  return (
-    <div className="post">
-      <NewPost />
-    </div>
-  );
-};
-
-export default AffichagePosts;*/
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NewPost from ".";
+import NewPic from ".";
 
 function DisplayPosts() {
   const [data, setData] = useState([]);
@@ -35,15 +22,22 @@ function DisplayPosts() {
   return (
     <div>
       <div className="post">
-        <NewPost />
+        <NewPost setPosts={setData} />
+        <NewPic setPosts={setData} />
       </div>
-      <ul>
+
+      <section>
         {data.map((item) => (
-          <li key={item.id}>
-            <p>{item.message}</p>
-          </li>
+          <article key={item.id}>
+            <div className="post">
+              <p>{item.message}</p>
+              <p>{item.name}</p>
+              <p>{item.date}</p>
+              <p>{item.image}</p>
+            </div>
+          </article>
         ))}
-      </ul>
+      </section>
     </div>
   );
 }

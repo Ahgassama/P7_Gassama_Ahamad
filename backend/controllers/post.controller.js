@@ -20,7 +20,22 @@ exports.create = (req, res, next) => {
     if (err) {
       return res.status(400).json({ err });
     }
-    return res.status(201).json({ message: "Objet enregistré !" });
+    Post.findById(response.id, (error, data) => {
+      if (error) {
+        if (error.kind === "not_found") {
+          res.status(404).send({
+            message: `Not found Post`,
+          });
+        } else {
+          res.status(500).send({
+            message: "Error retrieving Post",
+          });
+        }
+      }
+      return res
+        .status(201)
+        .json({ message: "Objet enregistré !", post: data });
+    });
   });
 };
 exports.findOne = (req, res) => {

@@ -24,20 +24,24 @@ Post.create = (newPost, callback) => {
 };
 
 Post.findById = (id, result) => {
-  connection.query(`SELECT * FROM Posts WHERE idPost = ?`, [id], (err, res) => {
-    if (err) {
-      console.log("error: ", err);
-      result(err, null);
-      return;
+  connection.query(
+    `SELECT p.idPost, p.message, p.image, p.user_userid AS 'userId', p.date, u.name, u.surname FROM Posts p INNER JOIN Users u ON p.user_userid = u.userid WHERE p.idPost = ?`,
+    [id],
+    (err, res) => {
+      if (err) {
+        console.log("error: ", err);
+        result(err, null);
+        return;
+      }
+      if (res.length) {
+        console.log("found user: ", res[0]);
+        result(null, res[0]);
+        return;
+      }
+      // not found User with the id
+      result({ kind: "not_found" }, null);
     }
-    if (res.length) {
-      console.log("found user: ", res[0]);
-      result(null, res[0]);
-      return;
-    }
-    // not found User with the id
-    result({ kind: "not_found" }, null);
-  });
+  );
 };
 Post.getAll = (message, result) => {
   let query =
