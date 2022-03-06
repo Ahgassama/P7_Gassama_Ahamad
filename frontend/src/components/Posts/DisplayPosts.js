@@ -23,7 +23,6 @@ function DisplayPosts() {
     <div>
       <div className="post">
         <NewPost setPosts={setData} />
-        <NewPic setPosts={setData} />
       </div>
 
       <section>
