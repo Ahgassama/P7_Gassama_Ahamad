@@ -6,6 +6,11 @@ const NewPost = (props) => {
   const [image, setNewFile] = useState("");
   const onInputChange = (e) => {
     setNewFile(e.target.files[0]);
+    console.log(e.target.files);
+  };
+  const onMessageChange = (e) => {
+    setMessage(e.target.value);
+    console.log(e.target.value);
   };
   const handlePost = (e) => {
     console.log(message);
@@ -13,15 +18,16 @@ const NewPost = (props) => {
     const config = {
       headers: {
         Authorization: `bearer ${user.token}`,
+        "Content-Type": "multipart/form-data",
       },
     };
     const data = new FormData();
-    data.append("image", image);
     data.append("message", message);
+    data.append("image", image);
 
     e.preventDefault();
     axios
-      .post(`http://localhost:3000/api/post/`, { data }, config)
+      .post(`http://localhost:3000/api/post/`, data, config)
       .then((res) => {
         if (res.data.errors) {
           console.log("pas de message");
@@ -36,17 +42,12 @@ const NewPost = (props) => {
       });
   };
   return (
-    <form
-      action="/"
-      method="post"
-      enctype="multipart/form-data"
-      onSubmit={handlePost}
-    >
+    <form onSubmit={handlePost} encType="multipart/form-data">
       <input
         name="message"
         id="message"
         placeholder="Ecrivez à vos collègues..."
-        onChange={(e) => setMessage(e.target.value)}
+        onChange={onMessageChange}
         value={message}
       />
       <br />
