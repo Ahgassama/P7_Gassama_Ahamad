@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NewPost from ".";
-import NewPic from ".";
 
 function DisplayPosts() {
   const [data, setData] = useState([]);

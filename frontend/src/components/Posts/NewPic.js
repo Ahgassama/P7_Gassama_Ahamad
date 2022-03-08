@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 
-const NewPic = () => {
+const PostPic = () => {
   const image = new FormData();
   const user = JSON.parse(localStorage.getItem("Users"));
   const config = {
@@ -26,7 +26,7 @@ const NewPic = () => {
       });
   };
   return (
-    <div>
+    <form>
       <input
         className="form-input"
         type="file"
@@ -37,8 +37,8 @@ const NewPic = () => {
       />
       <br />
       <button onClick={SubmitFileData}>submit</button>
-    </div>
+    </form>
   );
 };
 
-export default NewPic;
+export default PostPic;
