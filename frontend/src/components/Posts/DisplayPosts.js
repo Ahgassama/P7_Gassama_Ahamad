@@ -28,10 +28,12 @@ function DisplayPosts() {
         {data.map((item) => (
           <article key={item.id}>
             <div className="post">
+              <img src={item.image} alt="img" className="media__post" />
+
               <p>{item.message}</p>
+
               <p>{item.name}</p>
               <p>{item.date}</p>
-              <p>{item.image}</p>
             </div>
           </article>
         ))}

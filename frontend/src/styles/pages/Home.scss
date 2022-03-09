@@ -40,8 +40,15 @@
   width: 100%;
 }
 
-#image-file {
+#image {
   border: none;
   height: 62px;
   width: 100%;
+}
+.media {
+  margin-top: 15px;
+  &__post {
+    width: 30%;
+    object-fit: cover;
+  }
 }
