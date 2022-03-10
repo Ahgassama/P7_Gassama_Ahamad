@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import NewPost from ".";
-import Comment from "./Comments/index";
+import CommentForm from ".";
 
-function DisplayPosts() {
+function DisplayComments() {
   const [data, setData] = useState([]);
   const user = JSON.parse(localStorage.getItem("Users"));
   const config = {
@@ -13,7 +12,10 @@ function DisplayPosts() {
   };
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(`http://localhost:3000/api/post/`, config);
+      const result = await axios.get(
+        `http://localhost:3000/api/comment/`,
+        config
+      );
       setData(result.data);
     };
     fetchData();
@@ -21,19 +23,18 @@ function DisplayPosts() {
 
   return (
     <div>
-      <div className="post">
-        <NewPost setPosts={setData} />
+      <div className="comment">
+        <CommentForm setComments={setData} />
       </div>
 
       <section>
         {data.map((item) => (
           <article key={item.id}>
-            <div className="post">
-              <img src={item.image} alt="img" className="media__post" />
+            <div className="comment">
               <p>{item.message}</p>
               <p>{item.name}</p>
               <p>{item.date}</p>
-              <Comment />
+              <input name="comment" id="comment" placeholder="Réagissez..." />
             </div>
           </article>
         ))}
@@ -41,4 +42,4 @@ function DisplayPosts() {
     </div>
   );
 }
-export default DisplayPosts;
+export default DisplayComments;
