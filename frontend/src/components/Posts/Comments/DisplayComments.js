@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+/*import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CommentForm from ".";
 
@@ -42,4 +42,4 @@ function DisplayComments() {
     </div>
   );
 }
-export default DisplayComments;
+export default DisplayComments;*/

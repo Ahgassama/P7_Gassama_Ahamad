@@ -6,7 +6,6 @@ const NewPost = (props) => {
   const [image, setNewFile] = useState("");
   const onInputChange = (e) => {
     setNewFile(e.target.files[0]);
-    console.log(e.target.files);
   };
   const onMessageChange = (e) => {
     setMessage(e.target.value);
@@ -34,6 +33,7 @@ const NewPost = (props) => {
         } else {
           console.log(res);
           props.setPosts((oldPosts) => [res.data.post, ...oldPosts]);
+          //localStorage.setItem("Post", JSON.stringify(res.data));
           //setMessage("");
         }
       })
@@ -42,7 +42,11 @@ const NewPost = (props) => {
       });
   };
   return (
-    <form onSubmit={handlePost} encType="multipart/form-data">
+    <form
+      onSubmit={handlePost}
+      encType="multipart/form-data"
+      className="post-form"
+    >
       <input
         name="message"
         id="message"

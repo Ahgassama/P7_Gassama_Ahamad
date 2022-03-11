@@ -24,25 +24,28 @@ function DisplayProfile() {
   }, []);
 
   return (
-    <form className="form-profil">
-      <label htmlFor="nom">Nom</label>
-      <input
-        className="profil-input"
-        type="text"
-        name="nom"
-        id="surname"
-        placeholder={data.name}
-      />
-      <br />
-      <label htmlFor="nom">Prénom</label>
-      <input
-        className="profil-input"
-        type="text"
-        name="nom"
-        id="surname"
-        placeholder={data.surname}
-      />
-    </form>
+    <div className="form-profil">
+      <div class="log-container">
+        <form action="" id="login-form">
+          <label htmlFor="name">Nom</label>
+          <br />
+          <input type="text" name="name" id="name" placeholder={data.name} />
+
+          <br />
+          <label htmlFor="surname">Prénom</label>
+          <br />
+          <input
+            type="text"
+            name="surname"
+            id="surname"
+            placeholder={data.surname}
+          />
+
+          <br />
+          <input type="submit" value="Supprimer mon compte" />
+        </form>
+      </div>
+    </div>
   );
 }
 export default DisplayProfile;
