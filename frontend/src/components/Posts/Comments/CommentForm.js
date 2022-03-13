@@ -35,6 +35,7 @@ const CommentForm = ({ post_idPost }) => {
           console.log(res);
         } else {
           console.log(res);
+          document.location.reload();
         }
       })
       .catch((err) => {
