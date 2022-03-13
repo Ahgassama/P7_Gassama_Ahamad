@@ -6,6 +6,7 @@ const CommentForm = (idPost) => {
 
   const handleCom = (e) => {
     console.log(message);
+    console.log(idPost);
     const user = JSON.parse(localStorage.getItem("Users"));
     const config = {
       headers: {

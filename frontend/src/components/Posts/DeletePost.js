@@ -2,8 +2,8 @@ import React from "react";
 import axios from "axios";
 
 const DeletePost = (idPost) => {
-  console.log(idPost);
   const handledeletePost = (e) => {
+    console.log(idPost);
     const user = JSON.parse(localStorage.getItem("Users"));
     const config = {
       headers: {
