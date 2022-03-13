@@ -33,7 +33,7 @@ const NewPost = (props) => {
         } else {
           console.log(res);
           props.setPosts((oldPosts) => [res.data.post, ...oldPosts]);
-          //localStorage.setItem("Post", JSON.stringify(res.data));
+
           //setMessage("");
         }
       })

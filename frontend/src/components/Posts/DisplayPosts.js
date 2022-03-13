@@ -3,6 +3,7 @@ import axios from "axios";
 import NewPost from ".";
 import Comments from "./Comments/index";
 import CommentForm from "./Comments/CommentForm";
+import "./Posts.scss";
 
 function DisplayPosts() {
   const [data, setData] = useState([]);
@@ -35,16 +36,16 @@ function DisplayPosts() {
         ) : (
           [...data].reverse().map((item) => (
             <article key={`article-${item.idPost}`} className="post-content">
+              <div className="post_item">
+                <p className="user-name">{item.name}</p>
+                <p className="date">{item.date}</p>
+              </div>
+              <p className="post-msg">{item.message}</p>
               {item.image != "" && item.image != null ? (
                 <div className="post-img">
                   <img src={item.image} alt="img" className="image__post" />
                 </div>
               ) : null}{" "}
-              <div className="post_item">
-                <p>{item.message}</p>
-                <p>{item.name}</p>
-                <p>{item.date}</p>
-              </div>
               <Comments data={item.comments} />
               <CommentForm data={item.idPost} />
             </article>

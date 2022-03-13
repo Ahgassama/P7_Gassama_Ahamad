@@ -19,12 +19,14 @@ const Comment = (props) => {
                   </p>
                 ))
               : null}
-            <li onClick={handleModal} id="comment">
-              Commentaire
-            </li>
-          </ul>
+            <ul>
+              <li onClick={handleModal} id="comment">
+                Commentaire
+              </li>
 
-          {commentModal && <CommentForm />}
+              {commentModal && <CommentForm />}
+            </ul>
+          </ul>
         </div>
       </div>
     </div>

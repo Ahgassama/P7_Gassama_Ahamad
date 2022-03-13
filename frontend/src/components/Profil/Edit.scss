@@ -1,18 +1,4 @@
-.form-profil {
-  display: flex;
-  justify-content: center;
-  height: 65%;
-  width: 60%;
-  box-sizing: border-box;
-  border: 5px solid #fff;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 0 7px #c1c1c1;
-  background-color: #fff;
-  margin: 20px;
-  padding: 20px;
-}
-.log-container {
+.profil-container {
   display: flex;
   justify-content: center;
   height: 45%;
@@ -24,4 +10,18 @@
   box-shadow: 0 0 7px #c1c1c1;
   background-color: #fff;
   margin: 0 auto;
+  padding: 20px;
+}
+#profil-form {
+  text-align: center;
+  input {
+    padding: 14px 20px;
+    margin: 20px;
+    font-size: 0, 5rem;
+    border-radius: 20px;
+    text-align: center;
+    &:focus {
+      box-shadow: 0 0 3px rgba(51, 51, 51, 0.2);
+    }
+  }
 }

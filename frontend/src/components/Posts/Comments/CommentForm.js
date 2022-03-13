@@ -7,10 +7,10 @@ const CommentForm = (idPost) => {
     console.log(idPost);
     console.log(message);
     const user = JSON.parse(localStorage.getItem("Users"));
-    // const idPost = JSON.parse(localStorage.getItem("Post").post.idPost);
     const config = {
       headers: {
         Authorization: `bearer ${user.token}`,
+        "Content-Type": "multipart/form-data",
       },
     };
     e.preventDefault();

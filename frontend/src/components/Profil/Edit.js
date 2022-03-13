@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import "./Edit.scss";
 
 function DisplayProfile() {
   const [data, setData] = useState([]);
@@ -25,8 +26,8 @@ function DisplayProfile() {
 
   return (
     <div className="form-profil">
-      <div class="log-container">
-        <form action="" id="login-form">
+      <div className="profil-container">
+        <form action="" id="profil-form">
           <label htmlFor="name">Nom</label>
           <br />
           <input type="text" name="name" id="name" placeholder={data.name} />
