@@ -1,12 +1,24 @@
 #comment-form {
+  display: flex;
   input {
     padding: 14px 20px;
-    margin: 0;
-    font-size: 0, 3rem;
+    margin: 5;
+    font-size: 0, 2rem;
     border-radius: 20px;
 
     &:focus {
       box-shadow: 0 0 3px rgba(51, 51, 51, 0.2);
     }
   }
+}
+
+#comment {
+  margin-left: 5px;
+  width: 50%;
+}
+#comment-label {
+  display: flex;
+}
+#reponse {
+  margin-left: 5px;
 }

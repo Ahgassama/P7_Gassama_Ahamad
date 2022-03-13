@@ -1,18 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./header.scss";
-const Header = () => {
+const HeaderProfile = () => {
   return (
     <header className="header-home">
       <div className="welcomePage">Bienvenue sur Grouporama!</div>
 
       <div className="logo-home">
-        <NavLink exact="true" to="/profil/">
-          <img src="./images/user.svg" alt="profile" />
+        <NavLink exact="true" to="/auth/">
+          <img src="./images/logout.png" alt="logout" />
         </NavLink>
       </div>
     </header>
   );
 };
 
-export default Header;
+export default HeaderProfile;

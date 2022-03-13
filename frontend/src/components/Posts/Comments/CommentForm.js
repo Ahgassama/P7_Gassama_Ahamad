@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "./Comments.scss";
 const CommentForm = (idPost) => {
   const [message, setMessage] = useState("");
 
@@ -36,9 +37,11 @@ const CommentForm = (idPost) => {
       });
   };
   return (
-    <div>
+    <div className="comment-conteneur">
+      <label htmlFor="commentaire" id="reponse">
+        Répondre
+      </label>
       <form action="" onSubmit={handleCom} id="comment-form">
-        <label htmlFor="commentaire">Laissez un commentaire</label>
         <br />
         <input
           type="text"

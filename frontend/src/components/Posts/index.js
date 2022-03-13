@@ -63,7 +63,7 @@ const NewPost = (props) => {
         onChange={onInputChange}
       />
       <br />
-      <input type="submit" value="Envoyer" />
+      <input id="post-input" type="submit" value="Envoyer" />
     </form>
   );
 };

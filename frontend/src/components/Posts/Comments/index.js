@@ -12,20 +12,17 @@ const Comment = (props) => {
       <div class="comment-container">
         <div class="comment-form">
           <ul>
+            {commentModal}
+            <li onClick={handleModal} id="comment">
+              Commentaires
+            </li>
             {props.data
               ? props.data.map((com) => (
                   <p key={`com-${com.idComment}`}>
-                    {com.surname} {com.message}{" "}
+                    {com.surname} {com.message} {com.date}{" "}
                   </p>
                 ))
               : null}
-            <ul>
-              <li onClick={handleModal} id="comment">
-                Commentaire
-              </li>
-
-              {commentModal && <CommentForm />}
-            </ul>
           </ul>
         </div>
       </div>

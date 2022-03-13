@@ -8,4 +8,40 @@
 }
 .post_item {
   display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#post-input {
+  padding: 14px 20px;
+  margin: 20px;
+  font-size: 0, 5rem;
+  border-radius: 20px;
+  text-align: center;
+
+  &:focus {
+    box-shadow: 0 0 3px rgba(51, 51, 51, 0.2);
+  }
+}
+.post-content {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 5px #fff;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 7px #c1c1c1;
+  background-color: #fff;
+  margin: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.post-item {
+  display: flex;
+  flex-direction: column;
+
+  line-height: 0.5em;
 }

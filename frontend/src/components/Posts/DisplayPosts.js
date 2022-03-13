@@ -46,8 +46,8 @@ function DisplayPosts() {
                   <img src={item.image} alt="img" className="image__post" />
                 </div>
               ) : null}{" "}
-              <Comments data={item.comments} />
               <CommentForm data={item.idPost} />
+              <Comments data={item.comments} />
             </article>
           ))
         )}

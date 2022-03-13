@@ -42,10 +42,9 @@
   flex-direction: column;
   object-fit: cover;
   background: white;
-  border: solid 1px black;
-  border-radius: 10px;
+  border-top: solid 1px black;
+  border-bottom: solid 1px black;
   width: 100%;
-  padding: 2px;
   height: 220px;
   margin: 2px;
   img {
@@ -76,36 +75,5 @@ textarea {
     border: none;
     height: 50%;
     width: 50%;
-  }
-}
-.post-content {
-  display: flex;
-  flex-direction: column;
-  height: 400px;
-  width: 100%;
-  box-sizing: border-box;
-  border: 5px #fff;
-  border-radius: 15px;
-  overflow: hidden;
-  box-shadow: 0 0 7px #c1c1c1;
-  background-color: #fff;
-  margin: 20px;
-  position: relative;
-  cursor: pointer;
-}
-.post-item {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  padding: 2px;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  line-height: 0.5em;
-}
-.comment-form {
-  display: flex;
-  & input {
-    border-radius: 15px;
-    width: 150px;
   }
 }

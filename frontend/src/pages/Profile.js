@@ -1,11 +1,11 @@
 import React from "react";
 import DisplayProfile from "../components/Profil/Edit";
-import Header from "../components/Header/header";
+import HeaderProfile from "../components/Header/HeaderProfile";
 const Profile = () => {
   return (
     <div>
       <div>
-        <Header />
+        <HeaderProfile />
       </div>
       <DisplayProfile />
     </div>
