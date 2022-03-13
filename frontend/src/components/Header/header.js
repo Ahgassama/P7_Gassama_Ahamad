@@ -7,7 +7,7 @@ const Header = () => {
       <div className="welcomePage">Bienvenue sur Grouporama!</div>
 
       <div className="logo-home">
-        <NavLink exact="true" to="/profil/">
+        <NavLink exact="true" to="/profil">
           <img src="./images/user.svg" alt="profile" />
         </NavLink>
       </div>

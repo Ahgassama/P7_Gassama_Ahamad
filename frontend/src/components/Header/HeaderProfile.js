@@ -6,8 +6,8 @@ const HeaderProfile = () => {
     <header className="header-home">
       <div className="welcomePage">Bienvenue sur Grouporama!</div>
 
-      <div className="logo-home">
-        <NavLink exact="true" to="/auth/">
+      <div className="logo-profil">
+        <NavLink exact="true" to="/auth">
           <img src="./images/logout.png" alt="logout" />
         </NavLink>
       </div>

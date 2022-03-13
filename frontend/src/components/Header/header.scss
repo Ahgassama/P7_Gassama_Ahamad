@@ -20,3 +20,27 @@
     }
   }
 }
+.header-home {
+  font-size: 30px;
+  height: 90px;
+  background: white;
+  display: flex;
+  justify-content: space-between;
+  .welcomePage {
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px;
+    font-size: 25px;
+  }
+  .logo-profil {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    img {
+      height: 30px;
+      width: 30px;
+
+      cursor: pointer;
+    }
+  }
+}
