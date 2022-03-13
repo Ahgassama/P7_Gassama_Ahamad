@@ -9,8 +9,8 @@ const Comment = (props) => {
   };
   return (
     <div>
-      <div class="comment-container">
-        <div class="comment-form">
+      <div className="comment-container">
+        <div className="comment-form">
           <ul>
             {commentModal}
             <li onClick={handleModal} id="comment">

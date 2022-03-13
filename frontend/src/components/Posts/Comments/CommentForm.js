@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Comments.scss";
-const CommentForm = (idPost) => {
+const CommentForm = ({ idPost }) => {
   const [message, setMessage] = useState("");
 
   const handleCom = (e) => {

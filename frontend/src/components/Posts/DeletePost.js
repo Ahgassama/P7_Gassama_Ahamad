@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const DeletePost = (idPost) => {
+const DeletePost = ({ idPost }) => {
   const handledeletePost = (e) => {
     console.log(idPost);
     const user = JSON.parse(localStorage.getItem("Users"));
@@ -19,7 +19,7 @@ const DeletePost = (idPost) => {
           console.log("pas de message");
         } else {
           console.log(res);
-          if (res.status === 200) document.location.reload();
+          //if (res.status === 200) document.location.reload();
           //setMessage("");
         }
       })
