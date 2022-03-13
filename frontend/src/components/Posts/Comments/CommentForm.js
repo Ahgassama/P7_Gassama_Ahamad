@@ -1,22 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Comments.scss";
-const CommentForm = ({ idPost }) => {
+const CommentForm = ({ post_idPost }) => {
   const [message, setMessage] = useState("");
 
   const handleCom = (e) => {
     console.log(message);
-    console.log(idPost);
+    console.log(post_idPost);
     const user = JSON.parse(localStorage.getItem("Users"));
     const config = {
       headers: {
         Authorization: `bearer ${user.token}`,
-        "Content-Type": "multipart/form-data",
       },
     };
     e.preventDefault();
 
-    axios({
+    /*axios({
       method: "POST",
       url: `http://localhost:3000/api/comment/`,
       data: {
@@ -24,7 +23,13 @@ const CommentForm = ({ idPost }) => {
         post_idPost: idPost,
       },
       config,
-    })
+    })*/
+    axios
+      .post(
+        `http://localhost:3000/api/comment/`,
+        { message, post_idPost },
+        config
+      )
       .then((res) => {
         if (res.data.error) {
           console.log(res);

@@ -48,7 +48,7 @@ function DisplayPosts() {
                 </div>
               ) : null}{" "}
               <DeletePost idPost={item.idPost} />
-              <CommentForm idPost={item.idPost} />
+              <CommentForm post_idPost={item.idPost} />
               <Comments data={item.comments} />
             </article>
           ))
