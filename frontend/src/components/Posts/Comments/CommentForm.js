@@ -38,9 +38,6 @@ const CommentForm = (idPost) => {
   };
   return (
     <div className="comment-conteneur">
-      <label htmlFor="commentaire" id="reponse">
-        Répondre
-      </label>
       <form action="" onSubmit={handleCom} id="comment-form">
         <br />
         <input
@@ -49,6 +46,7 @@ const CommentForm = (idPost) => {
           id="comment"
           onChange={(e) => setMessage(e.target.value)}
           value={message}
+          placeholder="Ecrire un commentaire..."
           required
         />
         <br />
