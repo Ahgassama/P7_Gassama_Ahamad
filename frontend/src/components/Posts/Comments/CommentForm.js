@@ -5,7 +5,6 @@ const CommentForm = (idPost) => {
   const [message, setMessage] = useState("");
 
   const handleCom = (e) => {
-    console.log(idPost);
     console.log(message);
     const user = JSON.parse(localStorage.getItem("Users"));
     const config = {

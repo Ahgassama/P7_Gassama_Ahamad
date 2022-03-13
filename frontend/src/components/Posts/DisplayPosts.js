@@ -3,6 +3,7 @@ import axios from "axios";
 import NewPost from ".";
 import Comments from "./Comments/index";
 import CommentForm from "./Comments/CommentForm";
+import DeletePost from "./DeletePost";
 import "./Posts.scss";
 
 function DisplayPosts() {
@@ -46,7 +47,8 @@ function DisplayPosts() {
                   <img src={item.image} alt="img" className="image__post" />
                 </div>
               ) : null}{" "}
-              <CommentForm data={item.idPost} />
+              <DeletePost idPost={item.idPost} />
+              <CommentForm idPost={item.idPost} />
               <Comments data={item.comments} />
             </article>
           ))
