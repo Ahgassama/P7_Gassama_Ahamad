@@ -43,7 +43,7 @@ function DisplayProfile() {
           />
 
           <br />
-          <input type="submit" value="Supprimer mon compte" />
+          <input type="submit" value="Désactiver mon compte" />
         </form>
       </div>
     </div>

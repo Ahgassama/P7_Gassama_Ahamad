@@ -3,6 +3,7 @@ import axios from "axios";
 
 const DeletePost = ({ idPost }) => {
   const handledeletePost = (e) => {
+    if (!window.confirm(`Voulez-vous vraiment supprimer le post ?`)) return;
     console.log(idPost);
     const user = JSON.parse(localStorage.getItem("Users"));
     const config = {
