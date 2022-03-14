@@ -81,7 +81,7 @@ Post.updateById = (id, post, result) => {
 };
 
 Post.remove = (id, result) => {
-  connection.query("DELETE * FROM Posts WHERE idPost = ?", id, (err, res) => {
+  connection.query("DELETE FROM Posts WHERE idPost = ?", id, (err, res) => {
     if (err) {
       console.log("error: ", err);
       result(null, err);

@@ -19,7 +19,7 @@ const DeletePost = ({ idPost }) => {
           console.log("pas de message");
         } else {
           console.log(res);
-          //if (res.status === 200) document.location.reload();
+          document.location.reload();
           //setMessage("");
         }
       })
