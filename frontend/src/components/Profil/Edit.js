@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import DeleteProfile from "./DeleteProfile";
 import "./Edit.scss";
 
 function DisplayProfile() {
@@ -43,7 +44,7 @@ function DisplayProfile() {
           />
 
           <br />
-          <input type="submit" value="Désactiver mon compte" />
+          <DeleteProfile />
         </form>
       </div>
     </div>
