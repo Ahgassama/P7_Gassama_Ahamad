@@ -55,7 +55,7 @@ Comment.getAll = (idPost, result) => {
   });
 };
 Comment.findAll = (result) => {
-  let query = `SELECT c.idComment, c.post_idPost AS 'idPost', c.message, u.userid, u.name, u.surname FROM Comments c INNER JOIN Users u ON c.user_userid = u.userid `;
+  let query = `SELECT c.idComment, c.post_idPost AS 'idPost', c.message,c.date, u.userid, u.name, u.surname FROM Comments c INNER JOIN Users u ON c.user_userid = u.userid `;
 
   connection.query(query, (err, res) => {
     if (err) {

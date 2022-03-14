@@ -18,8 +18,9 @@ const DeletePost = ({ idPost }) => {
         if (res.data.errors) {
           console.log("pas de message");
         } else {
-          console.log(res);
           document.location.reload();
+          console.log(res);
+
           //setMessage("");
         }
       })
