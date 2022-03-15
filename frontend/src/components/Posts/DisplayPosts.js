@@ -4,10 +4,17 @@ import NewPost from ".";
 import Comments from "./Comments/index";
 import CommentForm from "./Comments/CommentForm";
 import DeletePost from "./DeletePost";
+import ModifyPost from "./ModifyPost";
 import "./Posts.scss";
 
 function DisplayPosts() {
   const [data, setData] = useState([]);
+  const [PostModal, setPostModal] = useState(false);
+  const handleModals = (e) => {
+    if (e.target.id === "modify") {
+      setPostModal(true);
+    }
+  };
   const user = JSON.parse(localStorage.getItem("Users"));
   const config = {
     headers: {
@@ -48,6 +55,13 @@ function DisplayPosts() {
                 </div>
               ) : null}{" "}
               <DeletePost idPost={item.idPost} />
+              <input
+                type="submit"
+                id="modify"
+                onClick={handleModals}
+                value="Modifier"
+              />
+              {PostModal && <ModifyPost idPost={item.idPost} />}
               <CommentForm post_idPost={item.idPost} />
               <Comments data={item.comments} />
             </article>

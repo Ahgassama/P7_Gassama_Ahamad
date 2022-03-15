@@ -35,7 +35,7 @@ const DeleteProfile = () => {
     <input
       type="submit"
       onClick={handledeleteProfile}
-      value="Désactiver mon compte"
+      value="Désactiver le compte"
     />
   );
 };

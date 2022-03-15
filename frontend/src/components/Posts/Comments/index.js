@@ -15,9 +15,9 @@ const Comment = (props) => {
             <li id="comment">Commentaires</li>
             {props.data
               ? props.data.map((com) => (
-                  <p className="comment_style" key={`com-${com.idComment}`}>
+                  <li className="comment_style" key={`com-${com.idComment}`}>
                     {com.surname} {com.message} {com.date}{" "}
-                  </p>
+                  </li>
                 ))
               : null}
           </ul>
