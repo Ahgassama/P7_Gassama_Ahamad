@@ -54,16 +54,18 @@ function DisplayPosts() {
                   <img src={item.image} alt="img" className="image__post" />
                 </div>
               ) : null}{" "}
-              <DeletePost idPost={item.idPost} />
-              <input
-                type="submit"
-                id="modify"
-                onClick={handleModals}
-                value="Modifier"
-              />
-              {PostModal && <ModifyPost idPost={item.idPost} />}
+              <Comments data={item.comments} />{" "}
+              <div className="moderate_conteneur">
+                <DeletePost idPost={item.idPost} />
+                <input
+                  type="submit"
+                  id="modify"
+                  onClick={handleModals}
+                  value="Modifier"
+                />
+                {PostModal && <ModifyPost idPost={item.idPost} />}
+              </div>
               <CommentForm post_idPost={item.idPost} />
-              <Comments data={item.comments} />
             </article>
           ))
         )}

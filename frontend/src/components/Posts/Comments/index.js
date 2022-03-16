@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import DeleteComment from "./DeleteComments";
 
 const Comment = (props) => {
   //const [commentModal, setCommentModal] = useState(false);
@@ -16,7 +17,9 @@ const Comment = (props) => {
             {props.data
               ? props.data.map((com) => (
                   <li className="comment_style" key={`com-${com.idComment}`}>
-                    {com.surname} {com.message} {com.date}{" "}
+                    {com.surname} <br />
+                    {com.message} {com.date}{" "}
+                    <DeleteComment idComment={com.idComment} />
                   </li>
                 ))
               : null}

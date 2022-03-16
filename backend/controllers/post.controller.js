@@ -91,6 +91,7 @@ exports.update = (req, res) => {
       message: "Content can not be empty!",
     });
   }
+
   console.log(req.body);
   Post.updateById(req.params.id, new Post(req.body), (err, data) => {
     if (err) {

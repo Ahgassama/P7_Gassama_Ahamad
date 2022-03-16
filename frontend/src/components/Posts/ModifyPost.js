@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
+
 const ModifyPost = ({ idPost }) => {
   const [message, setMessage] = useState("");
   const [image, setNewFile] = useState("");
   const onInputChange = (e) => {
     setNewFile(e.target.files[0]);
+    console.log(e.target.files[0]);
   };
   const onMessageChange = (e) => {
     setMessage(e.target.value);
@@ -62,7 +64,7 @@ const ModifyPost = ({ idPost }) => {
         />
 
         <br />
-        <input type="submit" value="Modifier" />
+        <input id="post-input" type="submit" value="Confirmer" />
       </form>
     </div>
   );

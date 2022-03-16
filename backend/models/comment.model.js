@@ -89,7 +89,7 @@ Comment.updateById = (id, comment, result) => {
 };
 Comment.remove = (id, result) => {
   connection.query(
-    "DELETE FROM * Comments WHERE idComment = ?",
+    "DELETE FROM  Comments WHERE idComment = ?",
     id,
     (err, res) => {
       if (err) {
