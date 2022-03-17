@@ -1,3 +1,18 @@
+@mixin tablet {
+  @media screen and (min-width: map-get($breakpoints, tablet)) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: map-get($breakpoints, desktop)) {
+    @content;
+  }
+}
+$breakpoints: (
+  tablet: 700px,
+  desktop: 1025px,
+);
 .header-home {
   font-size: 30px;
   height: 90px;
@@ -24,6 +39,7 @@
 .containerPost {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   width: 100%;
 }
 .post {
@@ -33,7 +49,7 @@
   background: white;
   border: solid 1px black;
   border-radius: 10px;
-  width: 150%;
+  width: 100%;
   padding: 5px;
   height: 200px;
   margin: 10px;

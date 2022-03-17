@@ -63,7 +63,7 @@ function DisplayPosts() {
                   onClick={handleModals}
                   value="Modifier"
                 />
-                {PostModal && <ModifyPost idPost={item.idPost} />}
+                {PostModal && <ModifyPost idPost={item.idPost} />}{" "}
               </div>
               <CommentForm post_idPost={item.idPost} />
             </article>

@@ -1,38 +1,27 @@
-import React from "react";
-import axios from "axios";
+import React, { useState } from "react";
+import DeletePost from "./DeletePost";
+import ModifyPost from "./ModifyPost";
 
-const UpdatePost = ({ idPost }) => {
-  const handleUpdatePost = (e) => {
-    if (!window.confirm(`Voulez-vous vraiment modifier le post ?`)) return;
-    console.log(idPost);
-    const user = JSON.parse(localStorage.getItem("Users"));
-    const config = {
-      headers: {
-        Authorization: `bearer ${user.token}`,
-      },
-    };
-
-    e.preventDefault();
-    axios
-      .put(`http://localhost:3000/api/post/${idPost}`, config)
-      .then((res) => {
-        if (res.data.errors) {
-          console.log("pas de message");
-        } else {
-          document.location.reload();
-          console.log(res);
-
-          //setMessage("");
-        }
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+const UpdatePost = ({ props }) => {
+  console.log(props);
+  const [PostModal, setPostModal] = useState(false);
+  const handleModals = (e) => {
+    if (e.target.id === "modify") {
+      setPostModal(true);
+    }
   };
+
   return (
-    <form onSubmit={handleUpdatePost} className="post-form">
-      <input id="post-input" type="submit" value="Supprimer" />
-    </form>
+    <div className="moderate_conteneur">
+      <DeletePost idPost={props.idPost} />
+      <input
+        type="submit"
+        id="modify"
+        onClick={handleModals}
+        value="Modifier"
+      />
+      {PostModal && <ModifyPost idPost={props.idPost} />}
+    </div>
   );
 };
 export default UpdatePost;

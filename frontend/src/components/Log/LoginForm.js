@@ -4,8 +4,8 @@ const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleLogin = (e) => {
-    const emailError = document.querySelector(".email.error");
-    const passwordError = document.querySelector(".password.error");
+    const emailError = document.querySelector("#emailErrorMsg");
+    const passwordError = document.querySelector("#passwordErrorMsg");
     const logError =
       "Merci de transmettre un e-mail et/ou un mot de passe valide";
     e.preventDefault();
@@ -19,8 +19,9 @@ const LoginForm = () => {
     })
       .then((res) => {
         if (res.data.error) {
+          console.log(res);
           emailError.innerHTML = logError;
-          passwordError.innerHTML = res.data.error.password;
+          passwordError.innerHTML = logError;
         } else {
           localStorage.setItem("Users", JSON.stringify(res.data));
 
@@ -45,7 +46,9 @@ const LoginForm = () => {
           value={email}
           required
         />
-        <div className="email error"></div>
+        <div>
+          <p id="emailErrorMsg"></p>
+        </div>
         <br />
         <label htmlFor="text">Mot de passe</label>
         <br />
@@ -57,7 +60,9 @@ const LoginForm = () => {
           value={password}
           required
         />
-        <div className="password error"></div>
+        <div>
+          <p id="passwordErrorMsg"></p>
+        </div>
         <br />
         <input type="submit" value="Se connecter" />
       </form>
