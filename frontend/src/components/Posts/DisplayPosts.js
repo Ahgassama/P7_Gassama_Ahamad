@@ -6,6 +6,7 @@ import CommentForm from "./Comments/CommentForm";
 import DeletePost from "./DeletePost";
 import ModifyPost from "./ModifyPost";
 import "./Posts.scss";
+// import UpdatePost from "./UpdatePost";
 
 function DisplayPosts() {
   const [data, setData] = useState([]);
@@ -32,6 +33,22 @@ function DisplayPosts() {
     }
   }, []);
 
+  const formatDate = (date) => {
+    let initial = new Date(date);
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    const options2 = {
+      dateStyle: "medium",
+      timeStyle: "medium",
+    };
+    // return initial.toLocaleDateString("fr-FR", options); // sans timeStyle
+    return Intl.DateTimeFormat("fr-FR", options2).format(initial);
+  };
+
   return (
     <div>
       <div className="post">
@@ -46,7 +63,7 @@ function DisplayPosts() {
             <article key={`article-${item.idPost}`} className="post-content">
               <div className="post_item">
                 <p className="user-name">{item.name}</p>
-                <p className="date">{item.date}</p>
+                <p className="date">{formatDate(item.date)}</p>
               </div>
               <p className="post-msg">{item.message}</p>
               {item.image != "" && item.image != null ? (
@@ -56,7 +73,7 @@ function DisplayPosts() {
               ) : null}{" "}
               <Comments data={item.comments} />{" "}
               <div className="moderate_conteneur">
-                <DeletePost idPost={item.idPost} />
+                <DeletePost idPost={item.idPost} setPosts={setData} />
                 <input
                   type="submit"
                   id="modify"
@@ -74,3 +91,4 @@ function DisplayPosts() {
   );
 }
 export default DisplayPosts;
+// <UpdatePost post={item} setPosts={setData}>

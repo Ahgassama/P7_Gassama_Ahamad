@@ -20,8 +20,6 @@ const LoginForm = () => {
       .then((res) => {
         if (res.data.error) {
           console.log(res);
-          emailError.innerHTML = logError;
-          passwordError.innerHTML = logError;
         } else {
           localStorage.setItem("Users", JSON.stringify(res.data));
 
@@ -31,6 +29,8 @@ const LoginForm = () => {
       })
       .catch((err) => {
         console.log(err.response);
+        emailError.innerHTML = logError;
+        passwordError.innerHTML = logError;
       });
   };
   return (

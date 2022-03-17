@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const DeletePost = ({ idPost }) => {
+const DeletePost = ({ idPost, setPosts }) => {
   const handledeletePost = (e) => {
     if (!window.confirm(`Voulez-vous vraiment supprimer le post ?`)) return;
     console.log(idPost);
@@ -21,7 +21,12 @@ const DeletePost = ({ idPost }) => {
         } else {
           // document.location.reload();
           console.log(res);
-
+          setPosts((oldPosts) => {
+            let posts = [...oldPosts];
+            const index = posts.findIndex((post) => post.idPost === idPost);
+            posts.splice(index, 1);
+            return posts;
+          });
           //setMessage("");
         }
       })
