@@ -71,7 +71,7 @@ function DisplayPosts() {
                   <img src={item.image} alt="img" className="image__post" />
                 </div>
               ) : null}{" "}
-              <Comments data={item.comments} />{" "}
+              <Comments data={item.comments} setComments={setData} />{" "}
               <div className="moderate_conteneur">
                 <DeletePost idPost={item.idPost} setPosts={setData} />
                 <input
@@ -82,7 +82,7 @@ function DisplayPosts() {
                 />
                 {PostModal && <ModifyPost idPost={item.idPost} />}{" "}
               </div>
-              <CommentForm post_idPost={item.idPost} />
+              <CommentForm post_idPost={item.idPost} setComments={setData} />
             </article>
           ))
         )}

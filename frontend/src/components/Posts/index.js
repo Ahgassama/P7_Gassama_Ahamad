@@ -33,8 +33,6 @@ const NewPost = (props) => {
         } else {
           console.log(res);
           props.setPosts((oldPosts) => [res.data.post, ...oldPosts]);
-
-          //setMessage("");
         }
       })
       .catch((err) => {
@@ -68,3 +66,9 @@ const NewPost = (props) => {
   );
 };
 export default NewPost;
+/*setPosts((oldPosts) => {
+            let posts = [res.data.post, ...oldPosts];
+            const index = posts.findIndex((post) => post.idPost === idPost);
+            posts.push(index, 1);
+            return posts;
+          }); */

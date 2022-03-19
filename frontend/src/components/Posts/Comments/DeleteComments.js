@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-const DeleteComment = ({ idComment }) => {
+const DeleteComment = ({ idComment, setComments }) => {
   const handledeleteComment = (e) => {
     if (!window.confirm(`Voulez-vous vraiment supprimer ce commentaire ?`))
       return;
@@ -37,3 +37,11 @@ const DeleteComment = ({ idComment }) => {
   );
 };
 export default DeleteComment;
+/*   setComments((oldComments) => {
+            let comments = [...oldComments];
+            const index = comments.findIndex(
+              (comment) => comment.idComment === idComment
+            );
+            comments.splice(index, 1);
+            return comments;
+          });*/

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Comments.scss";
-const CommentForm = ({ post_idPost }) => {
+const CommentForm = ({ post_idPost, props }) => {
   const [message, setMessage] = useState("");
 
   const handleCom = (e) => {
@@ -35,7 +35,8 @@ const CommentForm = ({ post_idPost }) => {
           console.log(res);
         } else {
           console.log(res);
-          document.location.reload();
+          //document.location.reload();
+          props.setComment((oldComments) => [res.data.comment, ...oldComments]);
         }
       })
       .catch((err) => {
