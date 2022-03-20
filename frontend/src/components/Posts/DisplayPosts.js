@@ -73,10 +73,9 @@ function DisplayPosts() {
               ) : null}{" "}
               <Comments data={item.comments} setComments={setData} />{" "}
               <div className="moderate_conteneur">
-                {isAdmin === 1 ||
-                  (userid === item.userId && (
-                    <DeletePost idPost={item.idPost} setPosts={setData} />
-                  ))}
+                {(userid === item.userId || isAdmin === 1) && (
+                  <DeletePost idPost={item.idPost} setPosts={setData} />
+                )}
               </div>
               <CommentForm post_idPost={item.idPost} setComments={setData} />
             </article>
