@@ -20,6 +20,7 @@ function DisplayProfile() {
         }`,
         config
       );
+      console.log(result.data);
       setData(result.data);
     };
     fetchData();
@@ -44,7 +45,12 @@ function DisplayProfile() {
           />
 
           <br />
-          <DeleteProfile />
+          <label htmlFor="email">E-mail</label>
+          <br />
+          <input type="text" name="email" id="email" placeholder={data.email} />
+
+          <br />
+          {data.isAdmin === 1 && <DeleteProfile />}
         </form>
       </div>
     </div>

@@ -4,24 +4,24 @@ import NewPost from ".";
 import Comments from "./Comments/index";
 import CommentForm from "./Comments/CommentForm";
 import DeletePost from "./DeletePost";
-import ModifyPost from "./ModifyPost";
+//import ModifyPost from "./ModifyPost";
 import "./Posts.scss";
 // import UpdatePost from "./UpdatePost";
 
 function DisplayPosts() {
   const [data, setData] = useState([]);
-  const [PostModal, setPostModal] = useState(false);
-  const handleModals = (e) => {
-    if (e.target.id === "modify") {
-      setPostModal(true);
-    }
-  };
+  const userid = JSON.parse(localStorage.getItem("Users")).userid;
+  const isAdmin = JSON.parse(localStorage.getItem("Users")).isAdmin;
+  console.log(isAdmin);
+  console.log(userid);
+
   const user = JSON.parse(localStorage.getItem("Users"));
   const config = {
     headers: {
       Authorization: `bearer ${user.token}`,
     },
   };
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(`http://localhost:3000/api/post/`, config);
@@ -73,14 +73,10 @@ function DisplayPosts() {
               ) : null}{" "}
               <Comments data={item.comments} setComments={setData} />{" "}
               <div className="moderate_conteneur">
-                <DeletePost idPost={item.idPost} setPosts={setData} />
-                <input
-                  type="submit"
-                  id="modify"
-                  onClick={handleModals}
-                  value="Modifier"
-                />
-                {PostModal && <ModifyPost idPost={item.idPost} />}{" "}
+                {isAdmin === 1 ||
+                  (userid === item.userId && (
+                    <DeletePost idPost={item.idPost} setPosts={setData} />
+                  ))}
               </div>
               <CommentForm post_idPost={item.idPost} setComments={setData} />
             </article>
@@ -92,3 +88,38 @@ function DisplayPosts() {
 }
 export default DisplayPosts;
 // <UpdatePost post={item} setPosts={setData}>
+/* useEffect(() => {
+  const deleteData = async () => {
+    const result = await  axios.get`http://localhost:3000/api/user/${
+      JSON.parse(localStorage.getItem("Users")).userid
+    }`;
+    console.log(result.data);
+   
+  };
+ 
+}, []);*/
+/*   <input
+                  type="submit"
+                  id="modify"
+                  onClick={handleModals}
+                  value="Modifier"
+                />{PostModal && <ModifyPost idPost={item.idPost} />}{" "}*/
+
+/* const [postdel, setPostdel] = useState([]);
+  useEffect(() => {
+    const Attribute = async () => {
+      const result = await axios.get`http://localhost:3000/api/user/${
+        JSON.parse(localStorage.getItem("Users")).userid
+      }`;
+      console.log(result.data);
+      const isAdmin = result.data.isAdmin;
+      if (
+        result.data.userid ===
+          JSON.parse(localStorage.getItem("user")).userid ||
+        isAdmin === 1
+      ) {
+        setPostdel(true);
+      }
+    };
+    Attribute();
+  }, []); */
