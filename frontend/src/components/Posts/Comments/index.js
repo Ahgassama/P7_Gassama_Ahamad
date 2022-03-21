@@ -1,6 +1,8 @@
 import DeleteComment from "./DeleteComments";
 import "./Comments.scss";
 const Comment = (props) => {
+  const userid = JSON.parse(localStorage.getItem("Users")).userid;
+  const isAdmin = JSON.parse(localStorage.getItem("Users")).isAdmin;
   const formatDate = (date) => {
     let initial = new Date(date);
     const options = {
@@ -28,7 +30,9 @@ const Comment = (props) => {
                     {com.surname} <br />
                     {com.message}{" "}
                     <p className="date_style">{formatDate(com.date)}</p>{" "}
-                    <DeleteComment idComment={com.idComment} />
+                    {(userid === com.userid || isAdmin === 1) && (
+                      <DeleteComment idComment={com.idComment} />
+                    )}
                   </li>
                 ))
               : null}
