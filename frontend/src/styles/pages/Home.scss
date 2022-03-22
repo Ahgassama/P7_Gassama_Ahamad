@@ -39,8 +39,8 @@ $breakpoints: (
 .containerPost {
   display: flex;
   justify-content: center;
+  align-content: center;
   flex-wrap: wrap;
-  width: 100%;
 }
 .post {
   display: flex;
@@ -49,7 +49,7 @@ $breakpoints: (
   background: white;
   border: solid 1px black;
   border-radius: 10px;
-  width: 100%;
+
   padding: 5px;
   height: 200px;
   margin: 10px;
@@ -63,7 +63,6 @@ $breakpoints: (
   border-bottom: solid 1px black;
   width: 100%;
   height: 220px;
-  margin: 2px;
   img {
     width: 100%;
     height: 100%;

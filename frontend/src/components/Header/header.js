@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Logout from "../Log/Logout";
 import "./header.scss";
 const Header = () => {
   return (
@@ -7,6 +8,7 @@ const Header = () => {
       <div className="welcomePage">Bienvenue sur Grouporama!</div>
 
       <div className="logo-home">
+        <Logout />
         <NavLink exact="true" to="/profil">
           <img src="./images/user.svg" alt="profile" />
         </NavLink>

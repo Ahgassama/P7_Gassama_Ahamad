@@ -1,9 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import DeleteProfile from "./DeleteProfile";
+import UpdatePassword from "./UpdatePassword";
 import "./Edit.scss";
 
 function DisplayProfile() {
+  const [updateModal, setUpdate] = useState(false);
+  const handleModals = (e) => {
+    if (e.target.id === "password") {
+      setUpdate(true);
+    }
+  };
   const [data, setData] = useState([]);
   const user = JSON.parse(localStorage.getItem("Users"));
   console.log(JSON.parse(localStorage.getItem("Users")).userid);
@@ -51,6 +58,16 @@ function DisplayProfile() {
 
           <br />
           {data.isAdmin === 1 && <DeleteProfile />}
+
+          <br />
+          <input
+            type="text"
+            name="password"
+            id="password"
+            placeholder="Modifier mon mot de passe"
+            onClick={handleModals}
+          />
+          {updateModal && <UpdatePassword />}
         </form>
       </div>
     </div>

@@ -39,12 +39,17 @@
     box-shadow: 0 0 3px rgba(51, 51, 51, 0.2);
   }
 }
-
+.post_list {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+}
 .post-content {
   display: flex;
   flex-direction: column;
-  height: 600px;
-  width: 100%;
+
+  width: auto;
   box-sizing: border-box;
   border: 5px #fff;
   border-radius: 15px;

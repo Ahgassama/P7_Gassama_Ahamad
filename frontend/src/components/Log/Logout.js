@@ -9,7 +9,12 @@ const Logout = () => {
   };
   return (
     <form onSubmit={handleLogout}>
-      <input type="image" id="image" alt="Logout" src="./images/logout.png" />
+      <input
+        type="image"
+        id="image-log"
+        alt="Logout"
+        src="./images/logout.png"
+      />
     </form>
   );
 };

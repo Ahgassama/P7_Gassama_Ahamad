@@ -1,5 +1,6 @@
 #comment-form {
   display: flex;
+  overflow-y: scroll;
   input {
     padding: 14px 20px;
     margin: 5;
@@ -14,10 +15,11 @@
 
 #comment {
   margin-left: 5px;
-  width: 50%;
+  width: 45%;
 }
 .comment_style {
   font-size: 13px;
+  overflow-y: scroll;
 }
 .date_style {
   font-style: italic;

@@ -74,8 +74,8 @@ User.getAll = (name, result) => {
 };
 User.updateById = (id, user, result) => {
   connection.query(
-    "UPDATE Users SET name = ?, surname = ? WHERE userid = ?",
-    [user.name, user.surname, id],
+    "UPDATE Users SET password = ? WHERE userid = ?",
+    [user.password, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);

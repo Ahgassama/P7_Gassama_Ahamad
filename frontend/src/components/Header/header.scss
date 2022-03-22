@@ -36,11 +36,16 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    font-size: 10px;
     img {
       height: 30px;
       width: 30px;
-
       cursor: pointer;
     }
   }
+}
+#image-log {
+  height: 55%;
+  width: 50px;
+  cursor: pointer;
 }

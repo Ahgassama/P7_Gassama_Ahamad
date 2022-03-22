@@ -55,7 +55,7 @@ function DisplayPosts() {
         <NewPost setPosts={setData} />
       </div>
 
-      <section>
+      <section className="post_list">
         {data.length === 0 ? (
           <p>Chargement</p>
         ) : (
@@ -72,11 +72,11 @@ function DisplayPosts() {
                 </div>
               ) : null}{" "}
               <Comments data={item.comments} setComments={setData} />{" "}
-              <div className="moderate_conteneur">
-                {(userid === item.userId || isAdmin === 1) && (
+              {(userid === item.userId || isAdmin === 1) && (
+                <div className="moderate_conteneur">
                   <DeletePost idPost={item.idPost} setPosts={setData} />
-                )}
-              </div>
+                </div>
+              )}
               <CommentForm post_idPost={item.idPost} setComments={setData} />
             </article>
           ))
