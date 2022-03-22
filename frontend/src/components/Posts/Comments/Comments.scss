@@ -17,9 +17,20 @@
   margin-left: 5px;
   width: 45%;
 }
+#comment-title {
+  margin-left: 2px;
+  width: auto;
+  font-style: oblique;
+}
 .comment_style {
   font-size: 13px;
   overflow-y: scroll;
+}
+.comment-bubble {
+  background-color: whitesmoke;
+  border-style: hidden;
+  border-radius: 10px;
+  margin-right: 10px;
 }
 .date_style {
   font-style: italic;

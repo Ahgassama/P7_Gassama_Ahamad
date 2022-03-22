@@ -23,13 +23,15 @@ const Comment = (props) => {
       <div className="comment-container">
         <div className="comment-form">
           <ul>
-            <li id="comment">Commentaires</li>
+            <li id="comment-title">Réagissez au Post!</li>
             {props.data
               ? props.data.map((com) => (
                   <li className="comment_style" key={`com-${com.idComment}`}>
-                    {com.surname} <br />
-                    {com.message}{" "}
-                    <p className="date_style">{formatDate(com.date)}</p>{" "}
+                    <div className="comment-bubble">
+                      <p className="comment-author"> </p> {com.surname} <br />
+                      <p className="comment-message">{com.message}</p>{" "}
+                      <p className="date_style">{formatDate(com.date)}</p>{" "}
+                    </div>
                     {(userid === com.userid || isAdmin === 1) && (
                       <DeleteComment idComment={com.idComment} />
                     )}

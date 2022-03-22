@@ -11,6 +11,10 @@ const SignupForm = () => {
     const surnameError = document.querySelector(".surname-error");
     const emailError = document.querySelector(".email-error");
     const passwordError = document.querySelector(".password-error");
+    const signupIdentityError = "Merci de transmettre des données valide";
+    const logError =
+      "Merci de transmettre un e-mail et/ou un mot de passe valide";
+
     e.preventDefault();
     axios({
       method: "POST",
@@ -29,12 +33,17 @@ const SignupForm = () => {
           emailError.innerHTML = res.data.errors.email;
           passwordError.innerHTML = res.data.errors.password;
         } else {
-          localStorage.setItem("Users", JSON.stringify(res.data));
-          window.location = "/";
+          alert(
+            "Votre compte est désormais bien créé! Merci de vous connecter pour intéragir avec vos collègues"
+          );
         }
       })
       .catch((err) => {
         console.log(err);
+        emailError.innerHTML = logError;
+        passwordError.innerHTML = logError;
+        nameError.innerHTML = signupIdentityError;
+        surnameError.innerHTML = signupIdentityError;
       });
   };
   return (
