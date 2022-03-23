@@ -62,7 +62,9 @@ function DisplayPosts() {
           [...data].reverse().map((item) => (
             <article key={`article-${item.idPost}`} className="post-content">
               <div className="post_item">
-                <p className="user-name">{item.name}</p>
+                <p className="user-name">
+                  {item.surname} {item.name}
+                </p>
                 <p className="date">{formatDate(item.date)}</p>
               </div>
               <p className="post-msg">{item.message}</p>

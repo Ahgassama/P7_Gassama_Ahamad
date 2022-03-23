@@ -57,7 +57,7 @@ function DisplayProfile() {
           <input type="text" name="email" id="email" placeholder={data.email} />
 
           <br />
-          {data.isAdmin === 1 && <DeleteProfile />}
+          <DeleteProfile />
 
           <br />
           <input

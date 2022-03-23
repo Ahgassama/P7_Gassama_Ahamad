@@ -96,6 +96,9 @@ exports.update = (req, res) => {
     });
   }
   console.log(req.body);
+  if (req.body.password) {
+    bcrypt.hash(req.body.password, 10);
+  }
   User.updateById(req.params.id, new User(req.body), (err, data) => {
     if (err) {
       if (err.kind === "not_found") {

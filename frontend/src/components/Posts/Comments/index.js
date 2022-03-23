@@ -13,7 +13,7 @@ const Comment = (props) => {
     };
     const options2 = {
       dateStyle: "medium",
-      timeStyle: "medium",
+      timeStyle: "short",
     };
     // return initial.toLocaleDateString("fr-FR", options); // sans timeStyle
     return Intl.DateTimeFormat("fr-FR", options2).format(initial);
@@ -30,7 +30,7 @@ const Comment = (props) => {
                     <div className="comment-bubble">
                       <p className="comment-author"> </p> {com.surname} <br />
                       <p className="comment-message">{com.message}</p>{" "}
-                      <p className="date_style">{formatDate(com.date)}</p>{" "}
+                      <p className="date-style">{formatDate(com.date)}</p>{" "}
                     </div>
                     {(userid === com.userid || isAdmin === 1) && (
                       <DeleteComment idComment={com.idComment} />

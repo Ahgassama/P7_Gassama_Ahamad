@@ -19,7 +19,6 @@ const DeletePost = ({ idPost, setPosts }) => {
         if (res.data.errors) {
           console.log("pas de message");
         } else {
-          // document.location.reload();
           console.log(res);
           setPosts((oldPosts) => {
             let posts = [...oldPosts];
@@ -27,7 +26,6 @@ const DeletePost = ({ idPost, setPosts }) => {
             posts.splice(index, 1);
             return posts;
           });
-          //setMessage("");
         }
       })
       .catch((err) => {
