@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 import Logout from "../Log/Logout";
 import "./header.scss";
@@ -30,6 +31,9 @@ const HeaderProfile = () => {
 
       <div className="logo-profil">
         <Logout />
+        <NavLink exact="true" to="/">
+          <img src="./images/feed.png" alt="profile" />
+        </NavLink>
       </div>
     </header>
   );
