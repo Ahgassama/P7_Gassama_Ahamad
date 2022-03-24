@@ -9,7 +9,6 @@ const UpdatePassword = () => {
   };
   const user = JSON.parse(localStorage.getItem("Users"));
   const id = JSON.parse(localStorage.getItem("Users")).userid;
-  console.log(id);
 
   const config = {
     headers: {
@@ -20,9 +19,16 @@ const UpdatePassword = () => {
 
   const handleModPassword = (e) => {
     console.log(password);
+    console.log(id);
     e.preventDefault();
-    axios
-      .put(`http://localhost:3000/api/user/${id}`, { password }, config)
+
+    axios({
+      method: "PUT",
+      url: `http://localhost:3000/api/user/${id}`,
+      data: {
+        password,
+      },
+    })
       .then((res) => {
         if (res.data.errors) {
           console.log("erreur de mot de passe");

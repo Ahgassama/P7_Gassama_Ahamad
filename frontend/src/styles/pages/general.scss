@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   width: auto;
-  background: #ffa07a;
+  background: #0f3a4c;
 }
 a {
   text-decoration: none;
@@ -20,3 +20,7 @@ p {
 input {
   margin: 5px;
 }
+$breakpoints: (
+  tablet: 700px,
+  desktop: 1025px,
+);
