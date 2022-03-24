@@ -34,7 +34,8 @@ const UpdatePassword = () => {
           console.log("erreur de mot de passe");
         } else {
           console.log(res);
-          //document.location.reload();
+          alert("Votre mot de passe a bien été modifié");
+          window.location.reload();
         }
       })
       .catch((err) => {
