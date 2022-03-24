@@ -73,13 +73,16 @@ function DisplayPosts() {
                   <img src={item.image} alt="img" className="image__post" />
                 </div>
               ) : null}{" "}
-              <Comments data={item.comments} setComments={setData} />{" "}
+              <Comments
+                data={item.comments}
+                setComments={setData}
+                postId={item.idPost}
+              />{" "}
               {(userid === item.userId || isAdmin === 1) && (
                 <div className="moderate_conteneur">
                   <DeletePost idPost={item.idPost} setPosts={setData} />
                 </div>
               )}
-              <CommentForm post_idPost={item.idPost} setComments={setData} />
             </article>
           ))
         )}

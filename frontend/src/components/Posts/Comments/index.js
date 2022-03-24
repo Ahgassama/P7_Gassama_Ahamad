@@ -1,8 +1,12 @@
 import DeleteComment from "./DeleteComments";
+import CommentForm from "./CommentForm";
+import { useState } from "react";
 import "./Comments.scss";
 const Comment = (props) => {
   const userid = JSON.parse(localStorage.getItem("Users")).userid;
   const isAdmin = JSON.parse(localStorage.getItem("Users")).isAdmin;
+  let [comments, setComments] = useState(props.data);
+  console.log(comments);
   const formatDate = (date) => {
     let initial = new Date(date);
     const options = {
@@ -21,11 +25,12 @@ const Comment = (props) => {
   return (
     <div>
       <div className="comment-container">
+        <CommentForm post_idPost={props.postId} setComments={setComments} />
         <div className="comment-form">
           <ul>
             <li id="comment-title">Réagissez au Post!</li>
-            {props.data
-              ? props.data.map((com) => (
+            {comments
+              ? comments.map((com) => (
                   <li className="comment_style" key={`com-${com.idComment}`}>
                     <div className="comment-bubble">
                       <p className="comment-author"> </p> {com.surname} <br />
@@ -33,7 +38,10 @@ const Comment = (props) => {
                       <p className="date-style">{formatDate(com.date)}</p>{" "}
                     </div>
                     {(userid === com.userid || isAdmin === 1) && (
-                      <DeleteComment idComment={com.idComment} />
+                      <DeleteComment
+                        idComment={com.idComment}
+                        setComments={setComments}
+                      />
                     )}
                   </li>
                 ))

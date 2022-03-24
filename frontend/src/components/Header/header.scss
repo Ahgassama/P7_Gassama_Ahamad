@@ -19,6 +19,15 @@
       cursor: pointer;
     }
   }
+  .logo-global {
+    display: flex;
+
+    align-items: center;
+    img {
+      cursor: pointer;
+      width: auto;
+    }
+  }
 }
 .header-home {
   font-size: 30px;

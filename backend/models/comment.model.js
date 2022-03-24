@@ -23,7 +23,7 @@ Comment.create = (newComment, callback) => {
 
 Comment.findById = (id, result) => {
   connection.query(
-    `SELECT message FROM Comments WHERE idComment = ?`,
+    `SELECT c.idComment, c.post_idPost AS 'idPost', c.message,c.date, u.userid, u.name, u.surname FROM Comments c INNER JOIN Users u ON c.user_userid = u.userid  WHERE idComment = ?`,
     [id],
     (err, res) => {
       if (err) {

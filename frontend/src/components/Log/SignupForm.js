@@ -3,7 +3,6 @@ import axios from "axios";
 const SignupForm = () => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleLogin = (e) => {
@@ -16,6 +15,7 @@ const SignupForm = () => {
       "Merci de transmettre un e-mail et/ou un mot de passe valide";
 
     e.preventDefault();
+
     axios({
       method: "POST",
       url: `http://localhost:3000/api/user/signup`,
@@ -28,10 +28,6 @@ const SignupForm = () => {
     })
       .then((res) => {
         if (res.data.errors) {
-          nameError.innerHTML = res.data.errors.name;
-          surnameError.innerHTML = res.data.errors.surname;
-          emailError.innerHTML = res.data.errors.email;
-          passwordError.innerHTML = res.data.errors.password;
         } else {
           alert(
             "Votre compte est désormais bien créé! Merci de vous connecter pour intéragir avec vos collègues"

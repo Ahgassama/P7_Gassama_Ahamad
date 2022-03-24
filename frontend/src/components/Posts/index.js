@@ -32,7 +32,7 @@ const NewPost = (props) => {
           console.log("pas de message");
         } else {
           console.log(res);
-          props.setPosts((oldPosts) => [res.data.post, ...oldPosts]);
+          props.setPosts((oldPosts) => [...oldPosts, res.data.post]);
         }
       })
       .catch((err) => {

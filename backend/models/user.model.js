@@ -72,10 +72,10 @@ User.getAll = (name, result) => {
     result(null, res);
   });
 };
-User.updateById = (id, user, result) => {
+User.updateById = (id, pwd, result) => {
   connection.query(
     "UPDATE Users SET password = ? WHERE userid = ?",
-    [user.password, id],
+    [pwd, id],
     (err, res) => {
       if (err) {
         console.log("error: ", err);

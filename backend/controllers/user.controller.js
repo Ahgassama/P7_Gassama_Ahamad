@@ -96,22 +96,24 @@ exports.update = (req, res) => {
     });
   }
   console.log(req.body);
-  if (req.body.password) {
-    bcrypt.hash(req.body.password, 10);
+
+  if (req.body) {
+    bcrypt.hash(req.body, 10).then((hash) => {
+      User.updateById(req.params.id, hash, (err, data) => {
+        if (err) {
+          if (err.kind === "not_found") {
+            res.status(404).send({
+              message: `Not found User with id ${req.params.id}.`,
+            });
+          } else {
+            res.status(500).send({
+              message: "Error updating User with id " + req.params.id,
+            });
+          }
+        } else res.send(data);
+      });
+    });
   }
-  User.updateById(req.params.id, new User(req.body), (err, data) => {
-    if (err) {
-      if (err.kind === "not_found") {
-        res.status(404).send({
-          message: `Not found User with id ${req.params.id}.`,
-        });
-      } else {
-        res.status(500).send({
-          message: "Error updating User with id " + req.params.id,
-        });
-      }
-    } else res.send(data);
-  });
 };
 
 exports.delete = (req, res) => {

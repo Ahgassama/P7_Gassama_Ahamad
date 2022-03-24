@@ -17,14 +17,12 @@ const UpdatePassword = () => {
       "Content-Type": "multipart/form-data",
     },
   };
-  const data = new FormData();
-  data.append("password", password);
 
   const handleModPassword = (e) => {
     console.log(password);
     e.preventDefault();
     axios
-      .put(`http://localhost:3000/api/user/${id}`, data, config)
+      .put(`http://localhost:3000/api/user/${id}`, { password }, config)
       .then((res) => {
         if (res.data.errors) {
           console.log("erreur de mot de passe");

@@ -23,7 +23,14 @@ const DeleteComment = ({ idComment, setComments }) => {
           //document.location.reload();
           console.log(res);
 
-          //setMessage("");
+          setComments((oldComments) => {
+            let comments = [...oldComments];
+            const index = comments.findIndex(
+              (com) => com.idComment === idComment
+            );
+            comments.splice(index, 1);
+            return comments;
+          });
         }
       })
       .catch((err) => {

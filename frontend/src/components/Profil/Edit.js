@@ -67,8 +67,8 @@ function DisplayProfile() {
             placeholder="Modifier mon mot de passe"
             onClick={handleModals}
           />
-          {updateModal && <UpdatePassword />}
         </form>
+        {updateModal && <UpdatePassword />}
       </div>
     </div>
   );
