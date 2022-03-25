@@ -15,15 +15,6 @@ const CommentForm = ({ post_idPost, setComments }) => {
     };
     e.preventDefault();
 
-    /*axios({
-      method: "POST",
-      url: `http://localhost:3000/api/comment/`,
-      data: {
-        message: message,
-        post_idPost: idPost,
-      },
-      config,
-    })*/
     axios
       .post(
         `http://localhost:3000/api/comment/`,
@@ -35,8 +26,8 @@ const CommentForm = ({ post_idPost, setComments }) => {
           console.log(res);
         } else {
           console.log(res.data.comment);
-          //document.location.reload();
           setComments((oldComments) => [res.data.comment, ...oldComments]);
+          document.getElementById("comment").value = "";
         }
       })
       .catch((err) => {

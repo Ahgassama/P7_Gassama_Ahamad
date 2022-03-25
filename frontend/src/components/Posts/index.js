@@ -33,6 +33,7 @@ const NewPost = (props) => {
         } else {
           console.log(res);
           props.setPosts((oldPosts) => [...oldPosts, res.data.post]);
+          document.getElementById("message").value = "";
         }
       })
       .catch((err) => {

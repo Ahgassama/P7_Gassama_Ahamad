@@ -8,9 +8,9 @@ const index = () => {
   return (
     <div>
       <Routes>
+        <Route default path="/auth" element={<Connexion />} />
         <Route path="/" element={<Home />} />
         <Route path="/profil" element={<Profil />} />
-        <Route path="/auth" element={<Connexion />} />
       </Routes>
     </div>
   );

@@ -5,12 +5,14 @@ const Connexion = () => {
     <div>
       <div className="logo">
         <img
-          src="./images/icon-left-font-monochrome-black.png"
+          src="./images/icon-left-font-monochrome-white.png"
           alt="img-logo"
         />
       </div>
       <div className="homeword">
-        <p>Venez discuter avec vos collègues en toute détente</p>
+        <p className="home-style">
+          Venez discuter avec vos collègues en toute détente
+        </p>
       </div>
       <div>
         <Log />
