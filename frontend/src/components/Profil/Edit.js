@@ -6,6 +6,9 @@ import "./Edit.scss";
 
 function DisplayProfile() {
   const [updateModal, setUpdate] = useState(false);
+  function toggle() {
+    setUpdate(!updateModal);
+  }
   const handleModals = (e) => {
     if (e.target.id === "password") {
       setUpdate(true);
@@ -61,11 +64,11 @@ function DisplayProfile() {
 
           <br />
           <input
-            type="text"
+            type="button"
             name="password"
             id="password"
-            placeholder="Modifier mon mot de passe"
-            onClick={handleModals}
+            value="Modifier mon mot de passe"
+            onClick={handleModals && toggle}
           />
         </form>
         {updateModal && <UpdatePassword />}

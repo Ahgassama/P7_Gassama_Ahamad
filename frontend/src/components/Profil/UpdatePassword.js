@@ -48,7 +48,7 @@ const UpdatePassword = () => {
         action=""
         encType="multipart/form-data"
         onSubmit={handleModPassword}
-        className="post-form"
+        className="password-form"
       >
         <input
           name="password"
@@ -61,7 +61,7 @@ const UpdatePassword = () => {
         <br />
 
         <br />
-        <input id="post-input" type="submit" value="Confirmer" />
+        <input id="modify-input" type="submit" value="Confirmer" />
       </form>
     </div>
   );
