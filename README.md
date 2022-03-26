@@ -1,5 +1,5 @@
 # P7_Gassama_Ahamad
-P7_Gassama_Ahamad
+
 Bonjour ,
 
 Projet 7 : Réseau social d'entreprise Groupomania
