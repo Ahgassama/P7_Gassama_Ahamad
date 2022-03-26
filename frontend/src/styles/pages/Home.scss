@@ -46,7 +46,7 @@ $breakpoints: (
   display: flex;
   flex-direction: column;
   object-fit: cover;
-  background: white;
+  background: salmon;
   border: solid 1px black;
   border-radius: 10px;
 
@@ -78,9 +78,9 @@ textarea {
 }
 
 #message {
-  border: none;
+  border-radius: 15px;
   height: 40px;
-  width: 50%;
+  width: 80%;
 }
 
 .media {
