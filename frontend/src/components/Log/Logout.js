@@ -1,5 +1,5 @@
 import React from "react";
-
+//fonction de déconnexion de l'utilisateur
 const Logout = () => {
   const handleLogout = (e) => {
     e.preventDefault();

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./Comments.scss";
+//fonction d'edition d'un nouveau commentaire
 const CommentForm = ({ post_idPost, setComments }) => {
   const [message, setMessage] = useState("");
 
@@ -25,8 +26,7 @@ const CommentForm = ({ post_idPost, setComments }) => {
         if (res.data.error) {
           console.log(res);
         } else {
-          console.log(res.data.comment);
-          setComments((oldComments) => [res.data.comment, ...oldComments]);
+          setComments((oldComments) => [...oldComments, res.data.comment]);
           document.getElementById("comment").value = "";
         }
       })

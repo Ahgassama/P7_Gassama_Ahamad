@@ -2,6 +2,7 @@ import DeleteComment from "./DeleteComments";
 import CommentForm from "./CommentForm";
 import { useState } from "react";
 import "./Comments.scss";
+//Affichage de l'ensemble des commentaires d'un post
 const Comment = (props) => {
   const userid = JSON.parse(localStorage.getItem("Users")).userid;
   const isAdmin = JSON.parse(localStorage.getItem("Users")).isAdmin;
@@ -54,4 +55,3 @@ const Comment = (props) => {
 };
 
 export default Comment;
-//{commentModal} onClick={handleModal}

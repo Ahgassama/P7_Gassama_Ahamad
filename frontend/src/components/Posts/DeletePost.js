@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-
+//fonction de suppression d'un post
 const DeletePost = ({ idPost, setPosts }) => {
   const handledeletePost = (e) => {
     if (!window.confirm(`Voulez-vous vraiment supprimer le post ?`)) return;

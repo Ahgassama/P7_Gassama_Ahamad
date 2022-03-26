@@ -3,7 +3,7 @@ import axios from "axios";
 import DeleteProfile from "./DeleteProfile";
 import UpdatePassword from "./UpdatePassword";
 import "./Edit.scss";
-
+//Affichage du profil de l'utilisateur
 function DisplayProfile() {
   const [updateModal, setUpdate] = useState(false);
   function toggle() {

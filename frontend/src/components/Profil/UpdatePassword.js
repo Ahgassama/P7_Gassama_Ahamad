@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+//fonction de modification du mdp
 const UpdatePassword = () => {
   const [password, setPassword] = useState("");
   const onPasswordChange = (e) => {
@@ -16,31 +16,42 @@ const UpdatePassword = () => {
       "Content-Type": "multipart/form-data",
     },
   };
+  function passwordControl(password) {
+    if (/^(?=.*[A-Za-z])(\d)[A-Za-z\d]{8,}$/.test(password)) {
+      return true;
+    } else {
+      const errorMsg =
+        "Le mot de passe doit contenir au minimum 8 caractères dont un chiffre et une majuscule";
+      const displayError = document.querySelector(".password-error");
+      displayError.innerHTML = errorMsg;
+      return false;
+    }
+  }
 
   const handleModPassword = (e) => {
-    console.log(password);
-    console.log(id);
     e.preventDefault();
-
-    axios({
-      method: "PUT",
-      url: `http://localhost:3000/api/user/${id}`,
-      data: {
-        password,
-      },
-    })
-      .then((res) => {
-        if (res.data.errors) {
-          console.log("erreur de mot de passe");
-        } else {
-          console.log(res);
-          alert("Votre mot de passe a bien été modifié");
-          window.location.reload();
-        }
+    if (!window.confirm(`Confimez vous modifier votre mot de passe?`)) return;
+    if (passwordControl(password)) {
+      axios({
+        method: "PUT",
+        url: `http://localhost:3000/api/user/${id}`,
+        data: {
+          password,
+        },
       })
-      .catch((err) => {
-        console.log(err.response);
-      });
+        .then((res) => {
+          if (res.data.errors) {
+            console.log("erreur de mot de passe");
+          } else {
+            console.log(res);
+            alert("Votre mot de passe a bien été modifié");
+            window.location.reload();
+          }
+        })
+        .catch((err) => {
+          console.log(err.response);
+        });
+    }
   };
   return (
     <div>
@@ -59,7 +70,7 @@ const UpdatePassword = () => {
         />
 
         <br />
-
+        <div className="password-error"></div>
         <br />
         <input id="modify-input" type="submit" value="Confirmer" />
       </form>

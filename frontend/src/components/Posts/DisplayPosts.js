@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import NewPost from ".";
 import Comments from "./Comments/index";
-import CommentForm from "./Comments/CommentForm";
 import DeletePost from "./DeletePost";
-//import ModifyPost from "./ModifyPost";
-import "./Posts.scss";
-// import UpdatePost from "./UpdatePost";
 
+import "./Posts.scss";
+//Affichage des posts et des commentaires
 function DisplayPosts() {
   const [data, setData] = useState([]);
   const userid = JSON.parse(localStorage.getItem("Users")).userid;

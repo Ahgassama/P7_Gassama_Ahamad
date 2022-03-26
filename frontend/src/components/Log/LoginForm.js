@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
+//Connexion de l'utilisateur
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleLogin = (e) => {
-    const emailError = document.querySelector("#emailErrorMsg");
-    const passwordError = document.querySelector("#passwordErrorMsg");
-    const logError =
-      "Merci de transmettre un e-mail et/ou un mot de passe valide";
     e.preventDefault();
     axios({
       method: "POST",
@@ -24,13 +21,11 @@ const LoginForm = () => {
           localStorage.setItem("Users", JSON.stringify(res.data));
 
           window.location = "/";
-          //console.log(res);
         }
       })
       .catch((err) => {
         console.log(err.response);
-        emailError.innerHTML = logError;
-        passwordError.innerHTML = logError;
+        alert("Merci de transmettre un e-mail et/ou un mot de passe valide");
       });
   };
   return (
@@ -46,9 +41,7 @@ const LoginForm = () => {
           value={email}
           required
         />
-        <div>
-          <p id="emailErrorMsg"></p>
-        </div>
+        <div></div>
         <br />
         <label htmlFor="text">Mot de passe</label>
         <br />
@@ -60,9 +53,7 @@ const LoginForm = () => {
           value={password}
           required
         />
-        <div>
-          <p id="passwordErrorMsg"></p>
-        </div>
+        <div></div>
         <br />
         <input type="submit" value="Se connecter" />
       </form>

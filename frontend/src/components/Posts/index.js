@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-
+//Création d'un nouveau post
 const NewPost = (props) => {
   const [message, setMessage] = useState([]);
   const [image, setNewFile] = useState("");
@@ -12,7 +12,6 @@ const NewPost = (props) => {
     console.log(e.target.value);
   };
   const handlePost = (e) => {
-    console.log(message);
     const user = JSON.parse(localStorage.getItem("Users"));
     const config = {
       headers: {
@@ -34,6 +33,7 @@ const NewPost = (props) => {
           console.log(res);
           props.setPosts((oldPosts) => [...oldPosts, res.data.post]);
           document.getElementById("message").value = "";
+          document.getElementById("image").value = "";
         }
       })
       .catch((err) => {
@@ -52,6 +52,7 @@ const NewPost = (props) => {
         placeholder="Ecrivez à vos collègues..."
         onChange={onMessageChange}
         value={message}
+        required
       />
       <br />
       <input

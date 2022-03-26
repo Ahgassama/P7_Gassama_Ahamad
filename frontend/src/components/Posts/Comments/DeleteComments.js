@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-
+//fonction de suppression d'un commentaire
 const DeleteComment = ({ idComment, setComments }) => {
   const handledeleteComment = (e) => {
     if (!window.confirm(`Voulez-vous vraiment supprimer ce commentaire ?`))
@@ -20,7 +20,6 @@ const DeleteComment = ({ idComment, setComments }) => {
         if (res.data.errors) {
           console.log("pas de message");
         } else {
-          //document.location.reload();
           console.log(res);
 
           setComments((oldComments) => {

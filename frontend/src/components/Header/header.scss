@@ -1,3 +1,5 @@
+@import "../../styles/utils/mixin";
+@import "../../styles/utils/media";
 .header-home {
   font-size: 30px;
   height: 90px;
@@ -21,13 +23,23 @@
   }
   .logo-global {
     display: flex;
-
     align-items: center;
+    @include mobile {
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
     img {
       cursor: pointer;
       width: auto;
+      @include mobile {
+        width: 0px;
+      }
     }
   }
+}
+#feed-img {
+  width: 40px;
+  height: 40px;
 }
 .header-home {
   font-size: 30px;
