@@ -84,6 +84,7 @@ exports.findAll = (req, res) => {
     }
   });
 };
+//Non utilisé
 exports.update = (req, res) => {
   // Validate Request
   if (!req.body) {

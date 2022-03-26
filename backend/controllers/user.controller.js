@@ -78,6 +78,7 @@ exports.findOne = (req, res) => {
     } else res.send(data);
   });
 };
+//Non utilisé
 exports.findAll = (req, res) => {
   const name = req.query.name;
   User.getAll(name, (err, data) => {
@@ -88,6 +89,7 @@ exports.findAll = (req, res) => {
     else res.send(data);
   });
 };
+//update du mdp de l'utilisateur
 exports.update = (req, res) => {
   // Validate Request
   if (!req.body) {

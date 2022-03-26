@@ -46,6 +46,7 @@ const NewPost = (props) => {
       encType="multipart/form-data"
       className="post-form"
     >
+      <label htmlFor="message"></label>
       <input
         name="message"
         id="message"

@@ -59,6 +59,7 @@ exports.findAll = (req, res) => {
     else res.send(data);
   });
 };
+//Non utilisé
 exports.update = (req, res) => {
   // Validate Request
   if (!req.body) {
