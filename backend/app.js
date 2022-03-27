@@ -5,8 +5,7 @@ const path = require("path");
 const userRoutes = require("./routes/user.route");
 const postRoutes = require("./routes/post.route");
 const commentRoutes = require("./routes/comment.route");
-//console.log(userRoutes);
-//app.use(helmet());
+
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader(

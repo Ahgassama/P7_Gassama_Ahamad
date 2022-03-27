@@ -62,6 +62,7 @@ const UpdatePassword = () => {
         className="password-form"
       >
         <input
+          type="password"
           name="password"
           id="password"
           onChange={onPasswordChange}

@@ -27,7 +27,8 @@ const CommentForm = ({ post_idPost, setComments }) => {
           console.log(res);
         } else {
           setComments((oldComments) => [...oldComments, res.data.comment]);
-          document.getElementById("comment").value = "";
+          document.querySelector("#comment").value = "";
+          window.location.reload();
         }
       })
       .catch((err) => {
