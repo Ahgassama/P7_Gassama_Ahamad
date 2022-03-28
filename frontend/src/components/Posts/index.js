@@ -46,7 +46,6 @@ const NewPost = (props) => {
       encType="multipart/form-data"
       className="post-form"
     >
-      <label htmlFor="message"></label>
       <input
         name="message"
         id="message"
@@ -54,6 +53,7 @@ const NewPost = (props) => {
         onChange={onMessageChange}
         value={message}
         required
+        aria-labelledby="message"
       />
       <br />
       <input
@@ -62,6 +62,7 @@ const NewPost = (props) => {
         id="image"
         accept=".jpg, .jpeg, .png, .gif"
         onChange={onInputChange}
+        aria-labelledby="image"
       />
       <br />
       <input id="post-input" type="submit" value="Envoyer" />

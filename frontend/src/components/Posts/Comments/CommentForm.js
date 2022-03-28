@@ -26,7 +26,7 @@ const CommentForm = ({ post_idPost, setComments }) => {
         if (res.data.error) {
           console.log(res);
         } else {
-          setComments((oldComments) => [...oldComments, res.data.comment]);
+          setComments();
           document.querySelector("#comment").value = "";
           window.location.reload();
         }
@@ -39,6 +39,7 @@ const CommentForm = ({ post_idPost, setComments }) => {
     <div className="comment-conteneur">
       <form action="" onSubmit={handleCom} id="comment-form">
         <br />
+
         <input
           type="text"
           name="comment"
@@ -47,7 +48,9 @@ const CommentForm = ({ post_idPost, setComments }) => {
           value={message}
           placeholder="Ecrire un commentaire..."
           required
+          aria-labelledby="comment"
         />
+
         <br />
 
         <input type="submit" value="Envoyer" />
@@ -57,3 +60,4 @@ const CommentForm = ({ post_idPost, setComments }) => {
 };
 
 export default CommentForm;
+//setComments((oldComments) => [...oldComments, res.data.comment]);
