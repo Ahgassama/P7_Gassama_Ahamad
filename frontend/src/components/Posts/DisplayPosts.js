@@ -89,39 +89,3 @@ function DisplayPosts() {
   );
 }
 export default DisplayPosts;
-// <UpdatePost post={item} setPosts={setData}>
-/* useEffect(() => {
-  const deleteData = async () => {
-    const result = await  axios.get`http://localhost:3000/api/user/${
-      JSON.parse(localStorage.getItem("Users")).userid
-    }`;
-    console.log(result.data);
-   
-  };
- 
-}, []);*/
-/*   <input
-                  type="submit"
-                  id="modify"
-                  onClick={handleModals}
-                  value="Modifier"
-                />{PostModal && <ModifyPost idPost={item.idPost} />}{" "}*/
-
-/* const [postdel, setPostdel] = useState([]);
-  useEffect(() => {
-    const Attribute = async () => {
-      const result = await axios.get`http://localhost:3000/api/user/${
-        JSON.parse(localStorage.getItem("Users")).userid
-      }`;
-      console.log(result.data);
-      const isAdmin = result.data.isAdmin;
-      if (
-        result.data.userid ===
-          JSON.parse(localStorage.getItem("user")).userid ||
-        isAdmin === 1
-      ) {
-        setPostdel(true);
-      }
-    };
-    Attribute();
-  }, []); */

@@ -46,9 +46,3 @@ const Header = () => {
 };
 
 export default Header;
-/*<div className="logo-global">
-        <img
-          src="./images/icon-left-font-monochrome-black.png"
-          alt="img-logo"
-        />
-      </div>*/
