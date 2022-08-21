@@ -7,7 +7,7 @@ import "./header.scss";
 const Header = () => {
   const [data, setData] = useState([]);
   const user = JSON.parse(localStorage.getItem("Users"));
-  console.log(JSON.parse(localStorage.getItem("Users")).userid);
+
   const config = {
     headers: {
       Authorization: `bearer ${user.token}`,

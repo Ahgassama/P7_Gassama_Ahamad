@@ -7,6 +7,7 @@ const Home = () => {
   return (
     <div>
       <Header />
+
       <div className="containerPost">
         <DisplayPosts />
       </div>
