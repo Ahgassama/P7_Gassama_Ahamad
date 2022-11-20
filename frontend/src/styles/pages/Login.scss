@@ -32,8 +32,12 @@ img {
   ul {
     list-style-type: none;
     margin: 10;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
     li {
       cursor: pointer;
+      margin: 10px;
     }
   }
 }
